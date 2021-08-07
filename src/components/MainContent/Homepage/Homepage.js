@@ -33,33 +33,33 @@ export const Homepage = (props) => {
                                     1834 Map of Syracuse
                                 </h3>
                                 <div className="imageContainer">
-                                    <img className="widthOfIndexPage img-fluid" src={require('../../../images/syracuseMap1834.jpg').default} />
+                                    <img className="widthOfIndexPage img-fluid" src='/images/syracuseMap1834.jpg' />
                                 </div>
                                 <h3 className="indexH3 text-center pt-4">
                                     Clinton Square in 1880
                                 </h3>
                                 <div className="imageContainer">
-                                    <img className="widthOfIndexPage img-fluid" src={require('../../../images/clintonSquare1880.jpg').default} />
+                                    <img className="widthOfIndexPage img-fluid" src='/images/clintonSquare1880.jpg' />
                                 </div>
                                 <h3 className="indexH3 text-center pt-4">
                                     Syracuse 1890
                                 </h3>
                                 <div className="imageContainer">
-                                    <img className="widthOfIndexPage img-fluid" src={require('../../../images/syracuse1890.jpg').default} />
+                                    <img className="widthOfIndexPage img-fluid" src='/images/syracuse1890.jpg' />
                                 </div>
                                 <h3 className="indexH3 text-center pt-4">
                                     Syracuse City Hall in 1904 and the 1970s
                                 </h3>
                                 <div className="doubleImageContainer container-fluid d-flex justify-content-center flex-wrap">
                                     <div className="imageContainer">
-                                        <img className="sideBySide img-fluid" src={require('../../../images/syracuseCityHall1904.jpg').default} />
+                                        <img className="sideBySide img-fluid" src='/images/syracuseCityHall1904.jpg' />
                                     </div>
                                     <div className="imageContainer">
-                                        <img className="sideBySide img-fluid" src={require('../../../images/syracuseCityHall1970s.jpg').default} />
+                                        <img className="sideBySide img-fluid" src='/images/syracuseCityHall1970s.jpg' />
                                     </div>                                              
                                 </div>
                                 {/* <div className="imageContainer">
-                                    <img className="widthOfIndexPage img-fluid" src={require('../../../images/onondagaLakeYachtClub1900.jpg').default} />
+                                    <img className="widthOfIndexPage img-fluid" src='/images/onondagaLakeYachtClub1900.jpg' />
                                 </div> */}
                             </div>
 
