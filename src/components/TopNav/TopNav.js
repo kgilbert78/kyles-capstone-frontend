@@ -37,7 +37,7 @@ export const TopNav = (props) => {
                                 <a className="nav-link" href="/">Home</a>
                             </li>
                             <li className="navItem nav-item">
-                                <a className="nav-link" href="">Map</a>
+                                <a className="nav-link" href="/map">Map</a>
                             </li>
                             <li className="navItem nav-item">
                             <a className="nav-link" href="/tour">Tour Page</a>
