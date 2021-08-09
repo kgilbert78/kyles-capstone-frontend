@@ -8,7 +8,7 @@ export const Homepage = (props) => {
                     <div id="indexForeground">
                         <h1 className="indexH1">Walkumentary</h1>
                     </div>
-                    <div className="mainContent">
+                    <div className="homepageMainContent">
                         <h2 className="indexH2">
                             An immersive audio walking tour of Syracuse history.
                         </h2>
