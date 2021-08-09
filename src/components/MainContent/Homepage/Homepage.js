@@ -13,7 +13,7 @@ export const Homepage = (props) => {
                             An immersive audio walking tour of Syracuse history.
                         </h2>
                         <p>
-                            Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        The aim of this project was to create a sample of a tour that is primarily audio-based, leaving your eyes and hands free. Additional features include immersive sound effects and clips of speeches. Future plans include automatic play of the narrative when the user arrives at the site, and audio GPS directions to help the user navigate to the chosen site.
                         </p>
                         <div className="text-center">
                             <a href="/tour">
@@ -21,15 +21,9 @@ export const Homepage = (props) => {
                             </a>
                         </div>
                         <div className="largerDisplayOnly"> {/* .d-none .d-sm-block */}
-                            <h3 className="indexH3 text-center pt-4">
-                                Historical Images of Downtown Syracuse:
-                            </h3>
-                            <p mt-0>
-                                Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
                             {/* write alt tags for these & credit images */}
                             <div className="text-center">
-                                <h3 className="indexH3 text-center pt-4">
+                                <h3 className="indexH3 text-center pt-5">
                                     1834 Map of Syracuse
                                 </h3>
                                 <div className="imageContainer">

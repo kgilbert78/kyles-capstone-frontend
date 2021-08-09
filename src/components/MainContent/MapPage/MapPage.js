@@ -57,7 +57,7 @@
 
 //     //console.log(googleMapsAPIKey.key, typeof googleMapsAPIKey.key); // returns key w/o quotes, string but <LoadScript googleMapsApiKey={googleMapsAPIKey.key}> doesn't work
     
-//     return <LoadScript googleMapsApiKey="API Key">
+//     return <LoadScript googleMapsApiKey="APIKey">
 //             <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17} 
 //             onLoad={onLoad} 
 
@@ -68,7 +68,7 @@
 //                     label="Fayette Park" 
 //                     position={{lat: 43.0484000, lng:-76.1467240}}
 //                     onClick={(event) => {
-//                         //event.preventDefault();
+//                         event.preventDefault();
 //                         return (
 //                             <InfoWindow onLoad={onLoad} position={{lat: 43.0484000, lng:-76.1467240}}>
 //                                 <div style={divStyle}>
