@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BottomNav } from "../BottomNav/BottomNav";
 import { SampleTourSite } from "../TourSites/SampleTourSite";
+import { TourSites } from "../TourSites/TourSites";
 
 export const TourPageLayout = (props) => {
     return (
@@ -8,7 +9,7 @@ export const TourPageLayout = (props) => {
             <Router>
                 <Switch>
                     <Route path="/">
-                        <SampleTourSite />
+                        <TourSites />
                     </Route>
                 </Switch>
             </Router>

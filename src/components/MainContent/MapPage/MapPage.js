@@ -5,7 +5,7 @@ import { GoogleMap, LoadScript, Marker, InfoWindow, DirectionsService, Direction
 
 // https://www.npmjs.com/package/@react-google-maps/api
 
-const containerStyle = {height: "calc(100vh - 160px)", width: "100vw"};
+const containerStyle = {height: "calc(100vh - 185px)", width: "100vw"};
 const divStyle = {background: `white`, border: `1px solid #ccc`, padding: 15};
 
 // const center = {lat: 43.049736, lng:-76.150136};
@@ -78,20 +78,27 @@ function WalkumentaryMap() {
     return <div>
         <div id="userLocation" className="text-center">
             <h3>Please enable your location for directions to a site!</h3>
-            <button className="btn btn-info" onClick={getUserLocation}>Enable my Location</button>
-            <p>{userMarkerCoordinates}</p>
+            <button className="btn btn-info mb-3" onClick={getUserLocation}>Show my location</button>
         </div>
-        <LoadScript googleMapsApiKey="API Key">
+        <LoadScript googleMapsApiKey="AIzaSyAdQUkN9JnbfrY3eu680lFHIUrbx0qKjN8">
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17} 
         onLoad={onLoad} 
 
         
         // onUnmount={onUnmount}
         >
-             <Marker label="YOU ARE HERE" position={userLocation}></Marker>
+             <Marker label="YOU ARE HERE" icon="/icons/icons8-compass-50.png" position={userLocation}></Marker>
+             {/* <Marker label="YOU ARE HERE" 
+                icon="/icons/icons8-compass.gif" 
+                // icon="<img className=''youAreHere src='/icons/icons8-compass.gif' />" 
+                className="youAreHere" 
+                position={userLocation}>
+            </Marker> */}
+
             <Marker 
                 label="Fayette Park" 
                 position={{lat: 43.0484000, lng:-76.1467240}}
+                icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" 
                 onClick={(event) => {
                     event.preventDefault();
                     return (
@@ -136,12 +143,19 @@ function WalkumentaryMap() {
                 }}
             /> */}
 
-            <Marker label="City Hall / Market Hall" position={{lat: 43.0500000, lng: -76.1490000}}></Marker>
-            <Marker label="George Vashon Law Office" position={{lat: 43.0506402, lng:-76.1509000}}></Marker>
-            <Marker label="Jerry Rescue Monument?" position={{lat: 43.0507377, lng: -76.1534500}}></Marker>
-
+            <Marker label="City Hall" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0500000, lng: -76.1492500}}></Marker>
+            <Marker label="George Vashon Law Office" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0506402, lng: -76.1509000}}></Marker>
+            <Marker label="Jerry Rescue Monument" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0507377, lng: -76.1534500}}></Marker>
+            {/* icon="local_see" */}
             </GoogleMap>
         </LoadScript>
+            <span className="iconCredit">
+                <a target="_blank" href="https://icons8.com/icon/39712/sneakers">Sneaker</a>
+                &nbsp; & &nbsp; 
+                <a target="_blank" href="https://icons8.com/icon/uHuD6VI5HlWw/compass">Compass</a>
+                {/* <a target="_blank" href="https://icons8.com/icon/Wm3qmJKy2mqD/compass">Compass</a> */}
+                &nbsp; icons by Icons8
+            </span>
         </div>
     };
 
