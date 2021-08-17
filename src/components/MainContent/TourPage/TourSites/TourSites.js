@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./TourSites.scss"
+import { BottomNav } from "../BottomNav/BottomNav";
 
 export const TourSites = (props) => {
     const hotelSyracuseNow = '/images/hotelSyracuse.jpg';
@@ -122,6 +123,7 @@ export const TourSites = (props) => {
                     </section>
                 </div>
             </main>
+            <BottomNav />
         </div>
     );
 };

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Homepage } from "./Homepage/Homepage";
 import { TourPageLayout } from "./TourPage/TourPageLayout/TourPageLayout";
 import { MapPage } from "./MapPage/MapPage";
+import { TourSites } from "./TourPage/TourSites/TourSites";
 
 
 export const MainContent = (props) => {
@@ -16,7 +17,7 @@ export const MainContent = (props) => {
                         <MapPage />
                     </Route>
                     <Route path="/tour">
-                        <TourPageLayout />
+                        <TourSites />
                     </Route>
                 </Switch>
             </Router>

@@ -9,7 +9,7 @@ export const TourPageLayout = (props) => {
             <Router>
                 <Switch>
                     <Route path="/">
-                        <TourSites />
+                        <SampleTourSite />
                     </Route>
                 </Switch>
             </Router>
