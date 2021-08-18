@@ -1,6 +1,6 @@
 // import googleMapsAPIKey from "./googleMapsAPIKey/googleMapsAPIKey";
 import "./MapPage.scss";
-import { useState, useCallback, memo } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { GoogleMap, LoadScript, Marker, InfoWindow, DirectionsService, DirectionsRenderer, DirectionsRequest, DirectionsRendererOptions } from '@react-google-maps/api';
 
 // https://www.npmjs.com/package/@react-google-maps/api
@@ -15,8 +15,31 @@ function WalkumentaryMap() {
     const [origin, setOrigin] = useState(null);
     const [destination, setDestination] = useState(null);
     const [userLocation, setUserLocation] = useState(null);
-    const [center, setCenter] = useState({lat: 43.049736, lng: -76.150136})
+    const [center, setCenter] = useState({lat: 43.049736, lng: -76.150136});
+    const [markers, setMarkers] = useState(null);
 
+    useEffect(() => {
+        const loadSite = async () => {
+            const response = await fetch(`http://localhost:3005/sites/`, {
+                method: "GET"
+            });
+            const data = await response.json();
+            setMarkers(data.siteData);
+        };
+        loadSite();
+    },[]);
+    
+    // this runs before markers is set, and then again after, so it says undefined  the first time and can't access properties on undefined.
+    if (markers !== null) {
+        markers.map((marker) => {
+            console.log(
+                marker.name,
+                parseFloat(marker.location.latForMapDisplay),
+                parseFloat(marker.location.lngForMapDisplay)
+            );
+        })
+    }
+    
     const getUserLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(userMarkerCoordinates);
@@ -94,7 +117,21 @@ function WalkumentaryMap() {
                 className="youAreHere" 
                 position={userLocation}>
             </Marker> */}
+            
+{/* 
+            {if (markers !== null) {
+                markers.map((marker) => {
+                    return (
+                        <Marker label={marker.name} icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: parseFloat(marker.location.latForMapDisplay), lng: parseFloat(marker.location.lngForMapDisplay)}}></Marker>
+                    )
+                })
+            }} 
+*/}
 
+            <Marker label="City Hall" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0500000, lng: -76.1492500}}></Marker>
+            <Marker label="George Vashon Law Office" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0506402, lng: -76.1509000}}></Marker>
+            <Marker label="Jerry Rescue Monument" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0507377, lng: -76.1534500}}></Marker>
+            {/* icon="local_see" */}
             <Marker 
                 label="Fayette Park" 
                 position={{lat: 43.0484000, lng:-76.1467240}}
@@ -113,7 +150,7 @@ function WalkumentaryMap() {
                 }}
             >
             </Marker>
-        <InfoWindow onLoad={onLoad} position={{lat: 43.0484000, lng:-76.1467240}}>
+            <InfoWindow onLoad={onLoad} position={{lat: 43.0484000, lng:-76.1467240}}>
                 <div style={divStyle}>
                     {/* replace <a> with <Link to>, fix h3 to be h1 with styling to make it smaller, fix route to display Fayette Park tourpage */}
                     <h3><a href="/tour">Fayette Park</a></h3>
@@ -143,10 +180,7 @@ function WalkumentaryMap() {
                 }}
             /> */}
 
-            <Marker label="City Hall" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0500000, lng: -76.1492500}}></Marker>
-            <Marker label="George Vashon Law Office" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0506402, lng: -76.1509000}}></Marker>
-            <Marker label="Jerry Rescue Monument" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0507377, lng: -76.1534500}}></Marker>
-            {/* icon="local_see" */}
+
             </GoogleMap>
         </LoadScript>
             <span className="iconCredit">

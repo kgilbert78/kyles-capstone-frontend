@@ -3,6 +3,17 @@ import "./TourSites.scss"
 import { BottomNav } from "../BottomNav/BottomNav";
 
 export const TourSites = (props) => {
+    useEffect(() => {
+        const loadSite = async () => {
+            const response = await fetch(`http://localhost:3005/sites/1`, {
+                method: "GET"
+            });
+        const data = await response.json();
+        console.log(data);
+        };
+        loadSite();
+    },[]);
+
     const hotelSyracuseNow = '/images/hotelSyracuse.jpg';
     // const hotelSyracuse1920s = require('../../../../images/hotelSyracuse1920s.jpg')
 
