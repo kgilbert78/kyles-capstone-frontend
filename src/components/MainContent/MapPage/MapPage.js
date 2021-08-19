@@ -8,15 +8,15 @@ import { GoogleMap, LoadScript, Marker, InfoWindow, DirectionsService, Direction
 const containerStyle = {height: "calc(100vh - 185px)", width: "100vw"};
 const divStyle = {background: `white`, border: `1px solid #ccc`, padding: 15};
 
-// const center = {lat: 43.049736, lng:-76.150136};
-
-function WalkumentaryMap() {
+function WalkumentaryMap({handleLink}) {
     const [map, setMap] = useState(null);
     const [origin, setOrigin] = useState(null);
     const [destination, setDestination] = useState(null);
     const [userLocation, setUserLocation] = useState(null);
     const [center, setCenter] = useState({lat: 43.049736, lng: -76.150136});
     const [markers, setMarkers] = useState(null);
+    const [infoWindows, setInfoWindows] = useState(null);
+    // const [mapData, setMapData] = useState(null);
 
     useEffect(() => {
         const loadSite = async () => {
@@ -25,20 +25,11 @@ function WalkumentaryMap() {
             });
             const data = await response.json();
             setMarkers(data.siteData);
+            setInfoWindows(data.siteData)
+            // setMapData(data.siteData);
         };
         loadSite();
     },[]);
-    
-    // this runs before markers is set, and then again after, so it says undefined  the first time and can't access properties on undefined.
-    if (markers !== null) {
-        markers.map((marker) => {
-            console.log(
-                marker.name,
-                parseFloat(marker.location.latForMapDisplay),
-                parseFloat(marker.location.lngForMapDisplay)
-            );
-        })
-    }
     
     const getUserLocation = () => {
         if (navigator.geolocation) {
@@ -67,10 +58,6 @@ function WalkumentaryMap() {
         setMap(map);
     }, []);
 
-    // const onInfoWindowLoad = infoWindow => {
-    //     console.log('infoWindow: ', infoWindow)
-    // }
-    
     const onUnmount = useCallback(function callback(map) {
         setMap(null);
     }, []);
@@ -79,25 +66,22 @@ function WalkumentaryMap() {
         console.log(response);
     };
 
-    // ORIGINAL CODE FROM EXAMPLE
-    // directionsCallback (response) {
-    //     console.log(response)
-    
-    //     if (response !== null) {
-    //       if (response.status === 'OK') {
-    //         this.setState(
-    //           () => ({
-    //             response
-    //           })
-    //         )
-    //       } else {
-    //         console.log('response: ', response)
-    //       }
-    //     }
-    //   }
+        //console.log(googleMapsAPIKey.key, typeof googleMapsAPIKey.key); // returns key w/o quotes, string but <LoadScript googleMapsApiKey={googleMapsAPIKey.key}> doesn't work
 
-    //console.log(googleMapsAPIKey.key, typeof googleMapsAPIKey.key); // returns key w/o quotes, string but <LoadScript googleMapsApiKey={googleMapsAPIKey.key}> doesn't work
+    const AddMarkers = () => {
+        if (markers !== null) {
+            return (
+                markers.map((marker) => {
+                    return (
+                        <Marker key={marker.siteID} label={marker.name} icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: parseFloat(marker.location.latForMapDisplay), lng: parseFloat(marker.location.lngForMapDisplay)}}></Marker>
+                        
+                    );
+                })
+            )
+        };
+    };
     
+        
     return <div>
         <div id="userLocation" className="text-center">
             <h3>Please enable your location for directions to a site!</h3>
@@ -105,55 +89,21 @@ function WalkumentaryMap() {
         </div>
         <LoadScript googleMapsApiKey="AIzaSyAdQUkN9JnbfrY3eu680lFHIUrbx0qKjN8">
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17} 
-        onLoad={onLoad} 
-
-        
+        onLoad={onLoad}     
         // onUnmount={onUnmount}
         >
              <Marker label="YOU ARE HERE" icon="/icons/icons8-compass-50.png" position={userLocation}></Marker>
-             {/* <Marker label="YOU ARE HERE" 
-                icon="/icons/icons8-compass.gif" 
-                // icon="<img className=''youAreHere src='/icons/icons8-compass.gif' />" 
-                className="youAreHere" 
-                position={userLocation}>
-            </Marker> */}
-            
-{/* 
-            {if (markers !== null) {
-                markers.map((marker) => {
-                    return (
-                        <Marker label={marker.name} icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: parseFloat(marker.location.latForMapDisplay), lng: parseFloat(marker.location.lngForMapDisplay)}}></Marker>
-                    )
-                })
-            }} 
-*/}
 
-            <Marker label="City Hall" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0500000, lng: -76.1492500}}></Marker>
-            <Marker label="George Vashon Law Office" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0506402, lng: -76.1509000}}></Marker>
-            <Marker label="Jerry Rescue Monument" icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: 43.0507377, lng: -76.1534500}}></Marker>
-            {/* icon="local_see" */}
-            <Marker 
-                label="Fayette Park" 
-                position={{lat: 43.0484000, lng:-76.1467240}}
-                icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" 
-                onClick={(event) => {
-                    event.preventDefault();
-                    return (
-                        <InfoWindow onLoad={onLoad} position={{lat: 43.0484000, lng:-76.1467240}}>
-                            <div style={divStyle}>
-                                {/* replace <a> with <Link to>, fix h3 to be h1 with styling to make it smaller, fix route to display Fayette Park tourpage */}
-                                <h3><a href="/tour">Fayette Park</a></h3>
-                                <p>Brief description goes here.</p>
-                            </div>
-                        </InfoWindow>
-                    )
-                }}
-            >
-            </Marker>
+            {/* <AddMarkers />  */}
+            
+            {/* <AddInfoWindows /> */}
+            {/* Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops. */}
+
             <InfoWindow onLoad={onLoad} position={{lat: 43.0484000, lng:-76.1467240}}>
                 <div style={divStyle}>
                     {/* replace <a> with <Link to>, fix h3 to be h1 with styling to make it smaller, fix route to display Fayette Park tourpage */}
-                    <h3><a href="/tour">Fayette Park</a></h3>
+                    {/* CALL fetchParams FROM THIS LINK - use onClick? */}
+                    <h3><a href="/tour" onClick={handleLink}>Fayette Park</a></h3>
                     <p>Brief description goes here.</p>
                     <form>
                         <button className="btn btn-sm btn-info" onClick={calculateAndDisplayRoute}>
