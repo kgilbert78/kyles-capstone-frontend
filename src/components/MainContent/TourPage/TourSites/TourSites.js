@@ -11,6 +11,8 @@ export const TourSites = (props) => {
     // const [soundEffects, setSoundEffects] = useState(null);
     // const [textCredits, setTextCredits] = useState(null);
 
+    console.log("from Tour page:", props.fetchParams)
+
     useEffect(() => {
         const loadSite = async () => {
             const response = await fetch(`http://localhost:3005/sites/1`, {
@@ -149,6 +151,9 @@ export const TourSites = (props) => {
                                     </button>
                                 </div>
                             </div>
+                            <div className="soundEffectCaptions mt-3 text-center">
+                                <p>Sound effect details go here.</p>
+                            </div>
                             
                         </section>
 
@@ -161,6 +166,12 @@ export const TourSites = (props) => {
                                 <p>text goes here</p>
                                 {/* <RichText text={pageData.text} /> */}
                                 {/* install DOMPurify: https://www.npmjs.com/package/dompurify  */}
+                                <p>SOURCES:<br />
+                                    <em>
+                                        Sources go here, with links.<br />
+                                        {/* use .map to loop over them & add <br /> after each */}
+                                    </em>
+                                </p>
                             </div>
                         </section>
                     </div>
