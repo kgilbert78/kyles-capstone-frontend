@@ -16,6 +16,9 @@ function WalkumentaryMap({handleLink}) {
     const [center, setCenter] = useState({lat: 43.049736, lng: -76.150136});
     const [markers, setMarkers] = useState(null);
     const [infoWindows, setInfoWindows] = useState(null);
+    const [markerClicked, setMarkerClicked] = useState(false);
+    const [directions, setDirections] = useState(null)
+    
     // const [mapData, setMapData] = useState(null);
 
     useEffect(() => {
@@ -64,71 +67,69 @@ function WalkumentaryMap({handleLink}) {
 
     const directionsCallback = (response) => {
         console.log(response);
+        setDirections(response)
     };
 
         //console.log(googleMapsAPIKey.key, typeof googleMapsAPIKey.key); // returns key w/o quotes, string but <LoadScript googleMapsApiKey={googleMapsAPIKey.key}> doesn't work
 
-    const AddMarkers = () => {
-        if (markers !== null) {
-            return (
-                markers.map((marker) => {
-                    return (
-                        <Marker key={marker.siteID} label={marker.name} icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" position={{lat: parseFloat(marker.location.latForMapDisplay), lng: parseFloat(marker.location.lngForMapDisplay)}}></Marker>
-                        
-                    );
-                })
-            )
-        };
-    };
-    
+        if (!markers){
+            return <h1>Loading</h1>
+        }
+
         
     return <div>
         <div id="userLocation" className="text-center">
             <h3>Please enable your location for directions to a site!</h3>
             <button className="btn btn-info mb-3" onClick={getUserLocation}>Show my location</button>
         </div>
-        <LoadScript googleMapsApiKey="AIzaSyAdQUkN9JnbfrY3eu680lFHIUrbx0qKjN8">
+        <LoadScript googleMapsApiKey="API_Key">
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17} 
         onLoad={onLoad}     
         // onUnmount={onUnmount}
         >
-             <Marker label="YOU ARE HERE" icon="/icons/icons8-compass-50.png" position={userLocation}></Marker>
+            <Marker label="YOU ARE HERE" icon="/icons/icons8-compass-50.png" position={userLocation}>
+            </Marker>
 
-            {/* <AddMarkers />  */}
-            
-            {/* <AddInfoWindows /> */}
-            {/* Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops. */}
+            {markers.map((marker) => {
+                    return (
+                        <Marker 
+                            key={marker.siteID} 
+                            label={marker.name} 
+                            icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" 
+                            position={{lat: parseFloat(marker.location.latForMapDisplay), lng: parseFloat(marker.location.lngForMapDisplay)}} 
+                            onClick={() => {setMarkerClicked(marker.siteID)}}>
 
-            <InfoWindow onLoad={onLoad} position={{lat: 43.0484000, lng:-76.1467240}}>
-                <div style={divStyle}>
-                    {/* replace <a> with <Link to>, fix h3 to be h1 with styling to make it smaller, fix route to display Fayette Park tourpage */}
-                    {/* CALL fetchParams FROM THIS LINK - use onClick? */}
-                    <h3><a href="/tour" onClick={handleLink}>Fayette Park</a></h3>
-                    <p>Brief description goes here.</p>
-                    <form>
-                        <button className="btn btn-sm btn-info" onClick={calculateAndDisplayRoute}>
-                            Get Directions
-                        </button>
-                    </form>
-                </div>
-            </InfoWindow>
+                            {markerClicked === marker.siteID ? 
+                                <InfoWindow onLoad={onLoad} position={{lat: 43.0484000, lng:-76.1467240}} onCloseClick={() => {setMarkerClicked(null)}}>
+                                    <div style={divStyle}>
+                                        {/* replace <a> with <Link to>, fix h3 to be h1 with styling to make it smaller, fix route to display Fayette Park tourpage */}
+                                        <h3><a href="/tour" onClick={handleLink}>Fayette Park</a></h3>
+                                        <p>Brief description goes here.</p>
+                                        <button className="btn btn-sm btn-info" onClick={calculateAndDisplayRoute}>
+                                            Get Directions
+                                        </button>
+                                </div>
+                            </InfoWindow> : null}
+                        </Marker>
+                    );
+                })}
 
-            {/* <DirectionsService
+            {directions ? null : <DirectionsService
                 // required
-                options={{ // eslint-disable-line react-perf/jsx-no-new-object-as-prop
-                    destination: destination,
-                    origin: origin,
+                options={{ 
+                    destination: {lat: 43.0500000, lng: -76.1492500},
+                    origin: {lat: 43.0484000, lng:-76.1467240},
                     travelMode: 'WALKING'
                 }}
                 // required
                 callback={directionsCallback}
-            />
+            />}
 
-            <DirectionsRenderer
-                options={{ // eslint-disable-line react-perf/jsx-no-new-object-as-prop
-                    directions: directionsCallback() // ??? originally this.state.response
+            {directions ? <DirectionsRenderer
+                options={{ // eslint-disable-line 
+                    directions
                 }}
-            /> */}
+            /> : null}
 
 
             </GoogleMap>
