@@ -15,7 +15,7 @@ export const MainContent = (props) => {
         return(fetchParams);
     };
 
-    console.log(fetchParams);
+    // console.log("from parent", fetchParams);
 
     return (
         <div className="MainContent">
@@ -28,7 +28,7 @@ export const MainContent = (props) => {
                         <MapPage handleLink={handleLink}/>
                     </Route>
                     <Route path="/tour">
-                        <TourSites />
+                        <TourSites fetchParams={fetchParams} />
                     </Route>
                 </Switch>
             </Router>
