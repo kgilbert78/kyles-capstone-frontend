@@ -4,14 +4,15 @@ import { BottomNav } from "../BottomNav/BottomNav";
 import { RichText } from "./RichText";
 
 export const TourSites = (props) => {
-    const [pageData, setPageData] = useState(null);
+    const [pageData, setPageData] = useState(null); //{}
+    const [audioFilePath, setAudioFilePath] = useState("/audio/fayetteParkNarration.mp3");
     // const [site, setSite] = useState(null);
     // const [location, setLocation] = useState(null);
     // const [photos, setPhotos] = useState(null);
     // const [soundEffects, setSoundEffects] = useState(null);
     // const [textCredits, setTextCredits] = useState(null);
 
-    console.log("from Tour page:", props.fetchParams)
+    //console.log("from Tour page:", props.fetchParams)
 
     useEffect(() => {
         const loadSite = async () => {
@@ -53,15 +54,16 @@ export const TourSites = (props) => {
     //     });
     // };
     
-    // if (pageData !== null) {
+    if (pageData === null) {
+        return <h1>Loading...</h1>
+    }
         return (
             <div className="TourSite">
                 <main>
                     <div className="mainContent container-fluid d-flex justify-content-around flex-wrap">
                         <section className="imagesSounds col-lg-5">
                             <h1 className="siteName pb-2">
-                                Hotel Syracuse
-                                {/* {pageData.name} */}
+                                {pageData.name}
                             </h1>
                         {/* NEED TO GIVE CREDIT FOR IMAGE! source & license requirements at https://commons.wikimedia.org/wiki/File:Hotel_Syracuse,_New_York.jpg */}
                         <div className="imageContainer">
@@ -136,17 +138,40 @@ export const TourSites = (props) => {
 
                             <div className="soundEffects container-fluid d-flex justify-content-between pt-4">
                                 <div>
-                                    <button type="button" className="btn btn-lg btn-info">Play Narrative</button>
+                                    <button 
+                                        type="button" 
+                                        className="btn btn-lg btn-info"
+                                        onClick={(event) => {
+                                            setAudioFilePath("/audio/fayetteParkNarration.mp3")
+                                            console.log("audio in Tour page", audioFilePath)
+                                        }}
+                                    >
+                                        Play Narrative
+                                    </button>
                                 </div>
                                 <div>
-                                    <button type="button" className="btn btn-lg btn-info">
-                                        Sound 1
+                                    <button 
+                                        type="button" 
+                                        className="btn btn-lg btn-info"
+                                        onClick={(event) => {
+                                            setAudioFilePath("/audio/frederickDouglass")
+                                            console.log("audio in Tour page", audioFilePath)
+                                        }}
+                                    >
+                                        Douglass Speech
                                         {/* {pageData.soundEffects[0].name} */}
                                     </button>
                                 </div>
                                 <div>
-                                    <button type="button" className="btn btn-lg btn-info">
-                                        Sound 2
+                                <button 
+                                        type="button" 
+                                        className="btn btn-lg btn-info"
+                                        onClick={(event) => {
+                                            setAudioFilePath("/audio/freeSoundCanadianHorseAndCarriage")
+                                            console.log("audio in Tour page", audioFilePath)
+                                        }}
+                                    >
+                                        Horse & Carriage
                                         {/* {pageData.soundEffects[1].name} */}
                                     </button>
                                 </div>
@@ -176,7 +201,7 @@ export const TourSites = (props) => {
                         </section>
                     </div>
                 </main>
-                <BottomNav />
+                <BottomNav audioFilePath={audioFilePath} />
             </div>
         )
     // }
