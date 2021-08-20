@@ -86,8 +86,15 @@ main {
 
 .doubleImageContainer {
     height: 250px;
-    margin-bottom: 300px;
+    margin-bottom: 230px;
 }
+// @include media-breakpoint-up(sm) {
+//     .doubleImageContainer {
+//         margin-bottom: 780px;
+//     }
+// }
+// need solution for 576(sm) - 868 (575 doesn't display images, 869 unflexes)
+// >= 768 is md breakpoint
 
 .sideBySide {
     max-height: 100%;
