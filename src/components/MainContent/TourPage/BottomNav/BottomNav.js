@@ -3,9 +3,19 @@ import "./BottomNav.scss"
 
 export const BottomNav = (props) => {
     const audioPlayer = useRef(null);
-    const [filePath, setFilePath] = useState("/audio/freeSoundCanadianHorseAndCarriage.mp3");
+    // const [filePath, setFilePath] = useState("/audio/freeSoundCanadianHorseAndCarriage.mp3");
     const [playPauseButton, setPlayPauseButton] = useState("fas fa-play-circle");
     const [display, setDisplay] = useState();
+
+    useEffect(() => {
+        // somehow tell it to check the source in the html again. use "ref"?
+        // playFromStart(); // playPause();
+        console.log("audio in navbar:", props.audioFilePath)
+    },[props.audioFilePath])
+
+    // useEffect(() => {
+    //     // update display of h2 in volumeControlsDiv when volume changes
+    // },[audioPlayer.current.volume]) // Cannot read property 'volume' of null because initial useRef is null
 
     const playPause = () => {
         if (audioPlayer.current.paused) {
@@ -20,6 +30,8 @@ export const BottomNav = (props) => {
     const playFromStart = () => {
         if (audioPlayer.current.play() || audioPlayer.current.pause()) {
             audioPlayer.current.currentTime = 0;
+            playPause();
+            audioPlayer.current.pause ? setPlayPauseButton("fas fa-play-circle") : setPlayPauseButton("fas fa-pause-circle") 
         };
     };
 
@@ -37,10 +49,8 @@ export const BottomNav = (props) => {
 
     const volume = () => {
         console.log("volume")
-        // rename & use to toggle between displaying volumeControls & audioControls. Or put volumeControls in a dropdown(dropup?) menu like TopNav has?
+        // rename & use to toggle between displaying volumeControls & audioControls (with setDisplay). Or put volumeControls in a dropdown(dropup?) menu like TopNav has? Or modal? https://www.npmjs.com/package/reactjs-popup
     };
-
-    // add useEffect to make it refresh when the volume is adjusted so the right number displays. think about how useState for display/setDisplay should initially be set or interact with the useEffect.
 
     const volumeDown = () => {
         if (audioPlayer.current.play() && audioPlayer.current.volume > 0.11) {
@@ -107,7 +117,7 @@ export const BottomNav = (props) => {
                 </span>
             </div>
 
-            <audio ref={audioPlayer}><source src={filePath} type="audio/mpeg"></source></audio>
+            <audio ref={audioPlayer}><source src={props.audioFilePath} type="audio/mpeg"></source></audio>
             </nav>
         </div>
     );
