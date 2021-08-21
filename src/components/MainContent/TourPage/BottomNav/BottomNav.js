@@ -8,9 +8,13 @@ export const BottomNav = (props) => {
     const [display, setDisplay] = useState();
 
     useEffect(() => {
-        // somehow tell it to check the source in the html again. use "ref"?
-        // playFromStart(); // playPause();
-        console.log("audio in navbar:", props.audioFilePath)
+        
+            audioPlayer.current.load();
+            // somehow tell it to check the source in the html again. use "ref"?
+            // playFromStart(); // playPause();
+            console.log("audio in navbar:", props.audioFilePath)
+    
+        
     },[props.audioFilePath])
 
     // useEffect(() => {
@@ -31,7 +35,7 @@ export const BottomNav = (props) => {
         if (audioPlayer.current.play() || audioPlayer.current.pause()) {
             audioPlayer.current.currentTime = 0;
             playPause();
-            audioPlayer.current.pause ? setPlayPauseButton("fas fa-play-circle") : setPlayPauseButton("fas fa-pause-circle") 
+            // audioPlayer.current.pause ? setPlayPauseButton("fas fa-play-circle") : setPlayPauseButton("fas fa-pause-circle") 
         };
     };
 
