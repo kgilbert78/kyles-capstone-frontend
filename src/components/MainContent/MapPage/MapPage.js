@@ -48,13 +48,6 @@ function WalkumentaryMap({handleLink}) {
         setUserLocation({lat: position.coords.latitude, lng: position.coords.longitude});
         setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
     };
-
-    function calculateAndDisplayRoute(event) {
-        event.preventDefault();
-        setOrigin({lat: 43.0484000, lng: -76.1467240});
-        setDestination({lat: 43.0500000, lng: -76.1490000});
-        console.log("origin:", origin, "destination:", destination)
-    };
     
     // https://reactjs.org/docs/hooks-reference.html#usecallback
     const onLoad = useCallback(function callback(map, infoWindow, directionsService, directionsRenderer) {
@@ -97,15 +90,32 @@ function WalkumentaryMap({handleLink}) {
                             label={marker.name} 
                             icon="https://img.icons8.com/ios-filled/50/000000/sneakers.png" 
                             position={{lat: parseFloat(marker.location.latForMapDisplay), lng: parseFloat(marker.location.lngForMapDisplay)}} 
-                            onClick={() => {setMarkerClicked(marker.siteID)}}>
+                            onClick={markerClicked ? () => {setMarkerClicked(false)} : () => {setMarkerClicked(marker.siteID)}}>
 
                             {markerClicked === marker.siteID ? 
                                 <InfoWindow onLoad={onLoad} position={{lat: 43.0484000, lng:-76.1467240}} onCloseClick={() => {setMarkerClicked(null)}}>
                                     <div style={divStyle}>
-                                        {/* replace <a> with <Link to>, fix h3 to be h1 with styling to make it smaller, fix route to display Fayette Park tourpage */}
-                                        <h3><a href="/tour" onClick={handleLink}>Fayette Park</a></h3>
-                                        <p>Brief description goes here.</p>
-                                        <button className="btn btn-sm btn-info" onClick={calculateAndDisplayRoute}>
+                                        {/* Error: link is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`. */}
+                                        <h3><a href="/tour" onClick={() => handleLink(marker.siteID)}>{marker.name}</a></h3>
+                                        {/* https://upmostly.com/tutorials/pass-a-parameter-through-onclick-in-react */}
+                                        <p>{marker.location.popUpDescription}</p>
+                                        <button 
+                                        // it's doing this when you click the marker not the button. running setDestination causes an error about too many loops. also prints twice when infoWindow is not open and once if it is (evidence of the loop issue).
+                                            className="btn btn-sm btn-info" 
+                                            onClick={console.log(
+                                                {lat: 
+                                                    parseFloat(marker.location.latForMapDisplay), 
+                                                lng: 
+                                                    parseFloat(marker.location.lngForMapDisplay)
+                                                }
+                                            )}
+                                            // onClick={
+                                            //     setDestination({
+                                            //         lat: parseFloat(marker.location.latForMapDisplay), 
+                                            //         lng: parseFloat(marker.location.lngForMapDisplay)
+                                            //     })
+                                            // }
+                                        >
                                             Get Directions
                                         </button>
                                 </div>
