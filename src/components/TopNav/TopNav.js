@@ -7,7 +7,9 @@ export const TopNav = (props) => {
             {/* RESIZE TO STACK? https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp */}
             <nav className="navbarTop navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid">
-                        <a className="navbar-brand" href="#">Logo</a>
+                        <a className="logo navbar-brand" href="/">
+                            <img className="m-0 p-0" src="https://img.icons8.com/ios-filled/30/000000/sneakers.png"/>
+                        </a>
                     <button className="navbar-toggler" 
                         type="button" 
                         data-bs-toggle="collapse" 
@@ -40,7 +42,7 @@ export const TopNav = (props) => {
                                 <a className="nav-link" href="/map">Map</a>
                             </li>
                             <li className="navItem nav-item">
-                            <a className="nav-link" href="/tour">Tour Page</a>
+                            <a className="nav-link" href="/sites">Tour Sites</a>
                             {/* <Link to="/tour" className="nav-link">Tour Page</Link> */}
                             </li>
                         </ul>

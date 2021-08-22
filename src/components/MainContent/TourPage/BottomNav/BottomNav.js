@@ -5,16 +5,15 @@ export const BottomNav = (props) => {
     const audioPlayer = useRef(null);
     // const [filePath, setFilePath] = useState("/audio/freeSoundCanadianHorseAndCarriage.mp3");
     const [playPauseButton, setPlayPauseButton] = useState("fas fa-play-circle");
-    const [display, setDisplay] = useState();
+    // const [display, setDisplay] = useState();
 
     useEffect(() => {
-        
-            audioPlayer.current.load();
-            // somehow tell it to check the source in the html again. use "ref"?
-            // playFromStart(); // playPause();
-            console.log("audio in navbar:", props.audioFilePath)
-    
-        
+        audioPlayer.current.pause();
+        audioPlayer.current.currentTime = 0;
+        audioPlayer.current.load();
+        // somehow tell it to check the source in the html again. use "ref"?
+        // playFromStart(); // playPause();
+        console.log("audio in navbar:", props.audioFilePath)
     },[props.audioFilePath])
 
     // useEffect(() => {
@@ -35,7 +34,6 @@ export const BottomNav = (props) => {
         if (audioPlayer.current.play() || audioPlayer.current.pause()) {
             audioPlayer.current.currentTime = 0;
             playPause();
-            // audioPlayer.current.pause ? setPlayPauseButton("fas fa-play-circle") : setPlayPauseButton("fas fa-pause-circle") 
         };
     };
 

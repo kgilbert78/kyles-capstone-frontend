@@ -14,14 +14,16 @@ export const TourSites = (props) => {
 
     useEffect(() => {
         const loadSite = async () => {
-            const response = await fetch(`http://localhost:3005/sites/1`, {
+            const response = await fetch(`http://localhost:3005/sites/4
+            `, {
             // const response = await fetch(props.fetchParams, {
                 method: "GET"
             });
             const data = await response.json();
-            //console.log(data)
+            // console.log(data)
             setSiteData(data.selectedSiteData[0]);
-            setFeatureImageSource(photos?.url?.[0]);
+            setFeatureImageSource(data?.selectedSiteData?.[0]?.photos?.url?.[0]);
+            // console.log(data.selectedSiteData[0].photos.url[0])
         };
         loadSite();
         console.log(featureImageSource)
@@ -29,9 +31,9 @@ export const TourSites = (props) => {
    
     const {site, location, photos, soundEffects, textCredits} = siteData;
 
-    if (siteData === null || location === null || photos=== null || soundEffects=== null || textCredits=== null) {
+    if (siteData === null || location === null || photos=== null || soundEffects=== null || textCredits=== null || featureImageSource === []) {
         return <h1>Loading...</h1>
-    }
+    };
     
     
     return (
@@ -48,7 +50,8 @@ export const TourSites = (props) => {
                             className="featureImage img-fluid rounded" 
                             id="featureImage"
                             src={featureImageSource}
-                            alt="Hotel Syracuse"
+                            // src= {photos?.url?.[0]}
+                            alt={photos?.altTag?.[0]}
                             />
                     </div> 
                     
@@ -146,20 +149,19 @@ export const TourSites = (props) => {
                         <div className="description">
                             <RichText text={siteData.text} />
                             {/* install DOMPurify: https://www.npmjs.com/package/dompurify  */}
-                            <p>SOURCES:<br />
+                            <span>SOURCES:<br />
                                 <em>
                                     {
                                         textCredits?.map((textCredit) => {
                                             return (
                                                 <p key={textCredit?.textCreditID} className="my-0">
-                                                    {/* {textCredit?.credit} */}
                                                     <a href={textCredit?.url !== "" ? textCredit?.url : null}>{textCredit?.credit}</a>
                                                 </p>
-                                            )
+                                            );
                                         })
                                     }
                                 </em>
-                            </p>
+                            </span>
                         </div>
                     </section>
                 </div>

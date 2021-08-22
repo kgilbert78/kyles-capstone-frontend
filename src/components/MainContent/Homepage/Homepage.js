@@ -12,12 +12,13 @@ export const Homepage = (props) => {
                         <h2 className="indexH2">
                             An immersive audio walking tour of Syracuse history.
                         </h2>
-                        <p>
-                        The aim of this project was to create a sample of a tour that is primarily audio-based, leaving your eyes and hands free. Additional features include immersive sound effects and clips of speeches. Future plans include automatic play of the narrative when the user arrives at the site, and audio GPS directions to help the user navigate to the chosen site.
+                        <p className="text-center">
+                        My aim was to create a sample of a walking tour that is primarily audio-based, leaving your eyes and hands free. Additional features include immersive sound effects and clips of historical speeches from the site. Future plans include automatic play of the narration when the user arrives at the site, and voice GPS directions to help the user navigate to the chosen site.
                         </p>
+                        <p className="text-center">The theme of the sample tour is the struggle for equality.</p>
                         <div className="text-center">
-                            <a href="/tour">
-                                <button type="button" className="btn btn-xl btn-info">Go to Tour Options</button>
+                            <a href="/map">
+                                <button type="button" className="btn btn-xl btn-info">Go to the Map!</button>
                             </a>
                         </div>
                         <div className="largerDisplayOnly"> {/* .d-none .d-sm-block */}
