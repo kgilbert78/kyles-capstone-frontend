@@ -9,17 +9,6 @@ import { SiteList } from "./SiteList/SiteList";
 
 export const MainContent = (props) => {
 
-    const [fetchParams, setFetchParams] = useState("http://localhost:3005/sites/2");
-    
-    const handleLink = (siteID) => {
-        // setFetchParams("http://localhost:3005/sites/1");
-        setFetchParams(`http://localhost:3005/sites/${siteID}`);
-        console.log("site according to MainContent", siteID)
-        return(fetchParams);
-    };
-
-    // console.log("MainContent fetch", fetchParams);
-
     return (
         <div className="MainContent">
             <Router>
@@ -28,10 +17,9 @@ export const MainContent = (props) => {
                         <Homepage />
                     </Route>
                     <Route path="/map">
-                        <MapPage handleLink={handleLink}/>
+                        <MapPage />
                     </Route>
-                    <Route path="/tour">
-                        <TourSites fetchParams={fetchParams} />
+                    <Route path="/tour/:siteID" component={TourSites}>
                     </Route>
                     <Route path="/sites">
                         <SiteList />

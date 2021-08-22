@@ -10,15 +10,15 @@ export const TourSites = (props) => {
 
     const [audioFilePath, setAudioFilePath] = useState("/audio/fayetteParkNarration.mp3");
 
-    // console.log("Tour page fetch:", props.fetchParams) // prints multiples
+    console.log(props)
 
     useEffect(() => {
         const loadSite = async () => {
-            const response = await fetch(`http://localhost:3005/sites/4
-            `, {
-            // const response = await fetch(props.fetchParams, {
+            // const response = await fetch(`http://localhost:3005/sites/4`, {
+            const response = await fetch(`http://localhost:3005/sites/${props.match.params.siteID}`, {
                 method: "GET"
             });
+            console.log("Tour page fetch:", props.siteID)
             const data = await response.json();
             // console.log(data)
             setSiteData(data.selectedSiteData[0]);
@@ -26,7 +26,7 @@ export const TourSites = (props) => {
             // console.log(data.selectedSiteData[0].photos.url[0])
         };
         loadSite();
-        console.log(featureImageSource)
+        //console.log(featureImageSource)
     },[]);
    
     const {site, location, photos, soundEffects, textCredits} = siteData;

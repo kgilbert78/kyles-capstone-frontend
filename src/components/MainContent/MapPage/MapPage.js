@@ -9,7 +9,7 @@ import { GoogleMap, LoadScript, Marker, InfoWindow, DirectionsService, Direction
 const containerStyle = { height: "calc(100vh - 185px)", width: "100vw" };
 const divStyle = { background: `white`, border: `1px solid #ccc`, padding: 15 };
 
-function WalkumentaryMap({ handleLink }) {
+function WalkumentaryMap() {
     const [map, setMap] = useState(null);
     const [origin, setOrigin] = useState(null);
     const [userLocation, setUserLocation] = useState(null);
@@ -109,7 +109,13 @@ function WalkumentaryMap({ handleLink }) {
                                 <InfoWindow onLoad={onLoad} position={{ lat: 43.0484000, lng: -76.1467240 }} onCloseClick={() => { setMarkerClicked(null) }}>
                                     <div style={divStyle}>
                                         {/* Error: link is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`. */}
-                                        <h3><a href="/tour" onClick={() => handleLink(marker.siteID)}>{marker.name}</a></h3>
+                                        <h3>
+                                            <a
+                                                href={`/tour/${marker.siteID}`}
+                                            >
+                                                {marker.name}
+                                            </a>
+                                        </h3>
                                         {/* https://upmostly.com/tutorials/pass-a-parameter-through-onclick-in-react */}
                                         <p>{marker.location.popUpDescription}</p>
                                         <button
