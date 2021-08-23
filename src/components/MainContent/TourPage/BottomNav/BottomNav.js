@@ -2,17 +2,23 @@ import { useEffect, useRef, useState } from "react";
 import "./BottomNav.scss"
 
 export const BottomNav = (props) => {
+    console.log(props);
     const audioPlayer = useRef(null);
     // const [filePath, setFilePath] = useState("/audio/freeSoundCanadianHorseAndCarriage.mp3");
     const [playPauseButton, setPlayPauseButton] = useState("fas fa-play-circle");
     // const [display, setDisplay] = useState();
 
     useEffect(() => {
-        audioPlayer.current.pause();
+        if (!audioPlayer.current.paused) {
+            audioPlayer.current.pause();
+        }
+        
         audioPlayer.current.currentTime = 0;
-        audioPlayer.current.load();
-        // somehow tell it to check the source in the html again. use "ref"?
-        // playFromStart(); // playPause();
+        
+        setTimeout(() => {
+            audioPlayer.current.load();
+        },1000)
+
         console.log("audio in navbar:", props.audioFilePath)
     },[props.audioFilePath])
 

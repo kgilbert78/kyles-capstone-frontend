@@ -5,24 +5,22 @@ import { RichText } from "./RichText";
 
 export const TourSites = (props) => {
     const [siteData, setSiteData] = useState({});
-    const [featureImageSource, setFeatureImageSource] = useState([]);
+    const [featureImageSource, setFeatureImageSource] = useState("");
+    const [imageCaptionSource, setImageCaptionSource] = useState([]);
     //const [featureImageSource, setFeatureImageSource] = useState('/images/hotelSyracuse.jpg');
 
     const [audioFilePath, setAudioFilePath] = useState("/audio/fayetteParkNarration.mp3");
 
-    console.log(props)
-
     useEffect(() => {
         const loadSite = async () => {
-            // const response = await fetch(`http://localhost:3005/sites/4`, {
             const response = await fetch(`http://localhost:3005/sites/${props.match.params.siteID}`, {
                 method: "GET"
             });
-            console.log("Tour page fetch:", props.siteID)
             const data = await response.json();
-            // console.log(data)
             setSiteData(data.selectedSiteData[0]);
-            setFeatureImageSource(data?.selectedSiteData?.[0]?.photos?.url?.[0]);
+            const {url, caption} = data.selectedSiteData[0].photos[0];
+            setFeatureImageSource(url);
+            setImageCaptionSource(caption);
             // console.log(data.selectedSiteData[0].photos.url[0])
         };
         loadSite();
@@ -57,7 +55,8 @@ export const TourSites = (props) => {
                     
                         <h2 className="featureImageInfo text-center pt-3">
                             {/* Captions need to change with images */}
-                            {photos?.[0]?.caption}
+                            {/* {photos?.[0]?.caption} */}
+                            {imageCaptionSource}
                         </h2>
 
                         <div id="thumbnailRow" className="thumbnailRow row pt-3">
@@ -72,6 +71,8 @@ export const TourSites = (props) => {
                                         alt={photo?.altTag}
                                         onClick={()=>{
                                             setFeatureImageSource(photo?.url)
+                                            setImageCaptionSource(photo?.caption)
+                                            console.log(imageCaptionSource) // undefined
                                         }}
                                     />
                                 </div>
@@ -89,7 +90,6 @@ export const TourSites = (props) => {
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
                                         setAudioFilePath("/audio/fayetteParkNarration.mp3")
-                                        console.log("audio in Tour page", audioFilePath)
                                     }}
                                 >
                                     Play Narrative
@@ -100,7 +100,7 @@ export const TourSites = (props) => {
                                     type="button" 
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
-                                        setAudioFilePath("/audio/frederickDouglass")
+                                        setAudioFilePath("/audio/frederickDouglass.mp3")
                                         
                                             console.log("audio in Tour page", audioFilePath)
                                     
@@ -116,7 +116,7 @@ export const TourSites = (props) => {
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
                                         event.preventDefault();
-                                        setAudioFilePath("/audio/freeSoundCanadianHorseAndCarriage")
+                                        setAudioFilePath("/audio/freeSoundCanadianHorseAndCarriage.mp3")
                                         console.log("audio in Tour page", audioFilePath)
                                     }}
                                 >

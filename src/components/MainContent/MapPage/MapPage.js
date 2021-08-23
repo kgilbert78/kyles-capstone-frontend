@@ -1,6 +1,7 @@
 // import googleMapsAPIKey from "./googleMapsAPIKey/googleMapsAPIKey";
 import "./MapPage.scss";
 import { useState, useEffect, useCallback, memo } from "react";
+import { Link } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker, InfoWindow, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 
@@ -122,11 +123,11 @@ function WalkumentaryMap() {
                                     <div style={divStyle}>
                                         {/* Error: link is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`. */}
                                         <h3>
-                                            <a
-                                                href={`/tour/${marker.siteID}`}
+                                            <Link to=
+                                                {`/tour/${marker.siteID}`}
                                             >
                                                 {marker.name}
-                                            </a>
+                                            </Link>
                                         </h3>
                                         {/* https://upmostly.com/tutorials/pass-a-parameter-through-onclick-in-react */}
                                         <p>{marker.location.popUpDescription}</p>
