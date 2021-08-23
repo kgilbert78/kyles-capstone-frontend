@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Auth0Provider} from "@auth0/auth0-react";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Auth0Provider
+      domain="dev-oh-yzpnl.us.auth0.com"
+      clientId="QYDQR8RgswthIiXBZLMcWS6W2rqrz1n1"
+      redirectUri={window.location.origin}
+      audience="https://walkumentary-syracuse-backend.herokuapp.com/"
+      scope="read:current_user"
+    >
+      <App />
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

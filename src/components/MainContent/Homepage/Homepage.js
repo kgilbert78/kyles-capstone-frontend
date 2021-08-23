@@ -12,6 +12,7 @@ export const Homepage = (props) => {
                         <h2 className="indexH2">
                             An immersive audio walking tour of Syracuse history.
                         </h2>
+                        {/* <p>Welcome, {props.userFirstName}</p> */}
                         <p className="text-center">
                         My aim was to create a sample of a walking tour that is primarily audio-based, leaving your eyes and hands free. Additional features include immersive sound effects and clips of historical speeches from the site. Future plans include automatic play of the narration when the user arrives at the site, and voice GPS directions to help the user navigate to the chosen site.
                         </p>
