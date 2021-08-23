@@ -2,51 +2,37 @@ import { useEffect, useState } from "react";
 import "./TourSites.scss"
 import { BottomNav } from "../BottomNav/BottomNav";
 import { RichText } from "./RichText";
-import { CommentForm } from "../CommentForm";
-import { useAuth0 } from "@auth0/auth0-react";
 
 export const TourSites = (props) => {
     const [siteData, setSiteData] = useState({});
     const [featureImageSource, setFeatureImageSource] = useState([]);
+    //const [featureImageSource, setFeatureImageSource] = useState('/images/hotelSyracuse.jpg');
+
     const [audioFilePath, setAudioFilePath] = useState("/audio/fayetteParkNarration.mp3");
 
-    const [accessToken, setAccessToken] = useState();
-
-    const {isAuthenticated, isLoading, loginWithRedirect, user, logout, getAccessTokenSilently} = useAuth0();
+    console.log(props)
 
     useEffect(() => {
-        if (isLoading) {
-            return <h1 className="mt-5">Loading...</h1>
-        }
-    
-        if (!isAuthenticated) {
-            loginWithRedirect();
-            getAccessTokenSilently().then(token => setAccessToken(token));
+        const loadSite = async () => {
+            // const response = await fetch(`http://localhost:3005/sites/4`, {
+            const response = await fetch(`http://localhost:3005/sites/${props.match.params.siteID}`, {
+                method: "GET"
+            });
+            console.log("Tour page fetch:", props.siteID)
+            const data = await response.json();
+            // console.log(data)
+            setSiteData(data.selectedSiteData[0]);
+            setFeatureImageSource(data?.selectedSiteData?.[0]?.photos?.url?.[0]);
+            // console.log(data.selectedSiteData[0].photos.url[0])
         };
-    },[isAuthenticated]);
-
-    useEffect(() => {
-        if (accessToken) {
-            const loadSite = async () => {
-                const response = await fetch(`http://localhost:3005/sites/${props.match.params.siteID}`, {
-                    method: "GET",
-                    headers: {
-                        "Authorization": `Bearer ${accessToken}`
-                      }
-                });
-                const data = await response.json();
-                setSiteData(data.selectedSiteData[0]);
-                setFeatureImageSource(data?.selectedSiteData?.[0]?.photos?.url?.[0]);
-            };
-            loadSite();
-            //console.log(featureImageSource)
-        }
-    },[accessToken]);
+        loadSite();
+        //console.log(featureImageSource)
+    },[]);
    
     const {site, location, photos, soundEffects, textCredits} = siteData;
 
-    if (siteData === null || location === null || photos=== null || soundEffects=== null || textCredits=== null || featureImageSource === [] || !isAuthenticated) {
-        return <h1>Loading...</h1>
+    if (siteData === null || location === null || photos=== null || soundEffects=== null || textCredits=== null || featureImageSource === []) {
+        return <h1 className="mt-5">Loading...</h1>
     };
     
     
@@ -153,8 +139,6 @@ export const TourSites = (props) => {
                                 })}
                             </ul> 
                         </div>
-
-                        <CommentForm isAuthenticated={isAuthenticated} isLoading={isLoading} loginWithRedirect={loginWithRedirect} user={user} logout={logout} getAccessTokenSilently={getAccessTokenSilently} />
                         
                     </section>
 
@@ -182,8 +166,6 @@ export const TourSites = (props) => {
                     </section>
                 </div>
             </main>
-
-
             <BottomNav audioFilePath={audioFilePath} />
         </div>
     )
