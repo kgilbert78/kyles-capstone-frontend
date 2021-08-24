@@ -151,6 +151,32 @@ export const TourSites = (props) => {
                                     }
                                 </em>
                             </span>
+                            <span>Sound Effect Sources:<br />
+                                <em>
+                                    {
+                                        soundEffects?.map((soundEffect) => {
+                                            return (
+                                                <p key={soundEffect?.soundEffectID} className="my-0">
+                                                    <a href={soundEffect?.credit !== "" ? soundEffect?.creditURL : null}>{soundEffect?.credit}</a>
+                                                </p>
+                                            );
+                                        })
+                                    }
+                                </em>
+                            </span>
+                            <span>Photo Sources:<br />
+                                <em>
+                                    {
+                                        photos?.map((photo) => {
+                                            return (
+                                                <p key={photo?.photoID} className="my-0">
+                                                    <a href={photo?.credit !== "" ? photo?.creditURL : null}>{photo?.credit}</a>
+                                                </p>
+                                            );
+                                        })
+                                    }
+                                </em>
+                            </span>
                         </div>
                     </section>
                 </div>

@@ -15,7 +15,7 @@ export const BottomNav = (props) => {
         
         setTimeout(() => {
             audioPlayer.current.load();
-        },1000)
+        },500)
 
         console.log("audio in navbar:", props.audioFilePath)
     },[props.audioFilePath])
