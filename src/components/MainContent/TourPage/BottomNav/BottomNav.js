@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./BottomNav.scss"
 
 export const BottomNav = (props) => {
-    console.log(props);
     const audioPlayer = useRef(null);
-    // const [filePath, setFilePath] = useState("/audio/freeSoundCanadianHorseAndCarriage.mp3");
     const [playPauseButton, setPlayPauseButton] = useState("fas fa-play-circle");
     // const [display, setDisplay] = useState();
 

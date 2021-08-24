@@ -7,9 +7,7 @@ export const TourSites = (props) => {
     const [siteData, setSiteData] = useState({});
     const [featureImageSource, setFeatureImageSource] = useState("");
     const [imageCaptionSource, setImageCaptionSource] = useState([]);
-    //const [featureImageSource, setFeatureImageSource] = useState('/images/hotelSyracuse.jpg');
-
-    const [audioFilePath, setAudioFilePath] = useState("/audio/fayetteParkNarration.mp3");
+    const [audioFilePath, setAudioFilePath] = useState("");
 
     useEffect(() => {
         const loadSite = async () => {
@@ -21,10 +19,9 @@ export const TourSites = (props) => {
             const {url, caption} = data.selectedSiteData[0].photos[0];
             setFeatureImageSource(url);
             setImageCaptionSource(caption);
-            // console.log(data.selectedSiteData[0].photos.url[0])
+            setAudioFilePath(data.selectedSiteData[0].soundEffects[0].url)
         };
         loadSite();
-        //console.log(featureImageSource)
     },[]);
    
     const {site, location, photos, soundEffects, textCredits} = siteData;
@@ -48,14 +45,11 @@ export const TourSites = (props) => {
                             className="featureImage img-fluid rounded" 
                             id="featureImage"
                             src={featureImageSource}
-                            // src= {photos?.url?.[0]}
                             alt={photos?.altTag?.[0]}
                             />
                     </div> 
                     
                         <h2 className="featureImageInfo text-center pt-3">
-                            {/* Captions need to change with images */}
-                            {/* {photos?.[0]?.caption} */}
                             {imageCaptionSource}
                         </h2>
 
@@ -72,7 +66,6 @@ export const TourSites = (props) => {
                                         onClick={()=>{
                                             setFeatureImageSource(photo?.url)
                                             setImageCaptionSource(photo?.caption)
-                                            console.log(imageCaptionSource) // undefined
                                         }}
                                     />
                                 </div>
@@ -89,10 +82,12 @@ export const TourSites = (props) => {
                                     type="button" 
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
-                                        setAudioFilePath("/audio/fayetteParkNarration.mp3")
+                                        setAudioFilePath(soundEffects?.[0]?.url)
+                                        console.log(soundEffects?.[0]?.url)
                                     }}
                                 >
-                                    Play Narrative
+                                    {/* Play Narrative */}
+                                    {soundEffects?.[0]?.name}
                                 </button>
                             </div>
                             <div>
@@ -100,14 +95,11 @@ export const TourSites = (props) => {
                                     type="button" 
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
-                                        setAudioFilePath("/audio/frederickDouglass.mp3")
-                                        
-                                            console.log("audio in Tour page", audioFilePath)
-                                    
+                                        setAudioFilePath(soundEffects?.[1]?.url)
+                                        console.log("audio in Tour page", audioFilePath)
                                     }}
                                 >
-                                    {/* Douglass Speech */}
-                                    {soundEffects?.[0]?.name}
+                                    {soundEffects?.[1]?.name}
                                 </button>
                             </div>
                             <div>
@@ -116,13 +108,11 @@ export const TourSites = (props) => {
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
                                         event.preventDefault();
-                                        setAudioFilePath("/audio/freeSoundCanadianHorseAndCarriage.mp3")
+                                        setAudioFilePath(soundEffects[2].url)
                                         console.log("audio in Tour page", audioFilePath)
                                     }}
                                 >
-                                    {/* Horse & Carriage */}
-                                    {soundEffects?.[1]?.name}
-                                    {/* {console.log(soundEffects?.[1]?.name)}  */}
+                                    {soundEffects?.[2]?.name}
                                     {/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining */}
                                 </button>
                             </div>
@@ -130,7 +120,6 @@ export const TourSites = (props) => {
                         <div className="soundEffectCaptions mt-3 text-center">
                             <ul>
                                 {soundEffects?.map((soundEffect) => {
-                                    // console.log(soundEffect?.caption)
                                     return (
                                         soundEffect.caption ? 
                                             <li key={soundEffect?.soundEffectID}>{soundEffect?.caption}</li>
