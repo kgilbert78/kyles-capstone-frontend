@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 import "./TourSites.scss"
 import { BottomNav } from "../BottomNav/BottomNav";
 import { RichText } from "./RichText";
@@ -86,7 +87,6 @@ export const TourSites = (props) => {
                                         console.log(soundEffects?.[0]?.url)
                                     }}
                                 >
-                                    {/* Play Narrative */}
                                     {soundEffects?.[0]?.name}
                                 </button>
                             </div>
@@ -113,7 +113,6 @@ export const TourSites = (props) => {
                                     }}
                                 >
                                     {soundEffects?.[2]?.name}
-                                    {/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining */}
                                 </button>
                             </div>
                         </div>
