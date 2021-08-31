@@ -5,14 +5,12 @@ import { Link } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker, InfoWindow, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 
-// https://www.npmjs.com/package/@react-google-maps/api
-
 const containerStyle = { height: "calc(100vh - 185px)", width: "100vw" };
 const divStyle = { background: `white`, border: `1px solid #ccc`, padding: 15 };
 
 function WalkumentaryMap() {
     const [map, setMap] = useState(null);
-    const [origin, setOrigin] = useState(null);
+    const [origin, setOrigin] = useState({ lat: 0, lng: 0 });
     const [userLocation, setUserLocation] = useState(null);
     const [center, setCenter] = useState({ lat: 43.049736, lng: -76.150136 });
     const [markers, setMarkers] = useState(null);
@@ -22,8 +20,6 @@ function WalkumentaryMap() {
     const [directions, setDirections] = useState(null);
     const [directionsOptions, setDirectionsOptions] = useState({});
 
-    // const [mapData, setMapData] = useState(null);
-
     useEffect(() => {
         const loadSite = async () => {
             const response = await fetch(`http://localhost:3005/sites/`, {
@@ -32,7 +28,6 @@ function WalkumentaryMap() {
             const data = await response.json();
             setMarkers(data.siteData);
             setInfoWindows(data.siteData)
-            // setMapData(data.siteData);
         };
         loadSite();
     }, []);
@@ -60,23 +55,6 @@ function WalkumentaryMap() {
         setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
     };
 
-    const checkForUserLocation = () => {
-        if (userLocation === null) {
-            getUserLocation();
-            // async () => {
-            //     await userLocation;
-            //     return userLocation;
-            // }
-            setTimeout(() => { 
-                return userLocation 
-            }, 7000);
-            return userLocation
-        } else {
-            return userLocation
-        };
-    };
-
-    // https://reactjs.org/docs/hooks-reference.html#usecallback
     const onLoad = useCallback(function callback(map, infoWindow, directionsService, directionsRenderer) {
         setMap(map);
     }, []);
@@ -90,8 +68,6 @@ function WalkumentaryMap() {
         setDirections(response)
     };
 
-    //console.log(googleMapsAPIKey.key, typeof googleMapsAPIKey.key); // returns key w/o quotes, string but <LoadScript googleMapsApiKey={googleMapsAPIKey.key}> doesn't work
-
     if (!markers) {
         return <h1>Loading</h1>
     }
@@ -104,7 +80,6 @@ function WalkumentaryMap() {
         <LoadScript googleMapsApiKey="API_Key">
             <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}
                 onLoad={onLoad}
-            // onUnmount={onUnmount}
             >
                 <Marker label="YOU ARE HERE" icon="/icons/icons8-compass-50.png" position={userLocation}>
                 </Marker>
@@ -121,7 +96,6 @@ function WalkumentaryMap() {
                             {markerClicked === marker.siteID ?
                                 <InfoWindow onLoad={onLoad} position={{ lat: 43.0484000, lng: -76.1467240 }} onCloseClick={() => { setMarkerClicked(null) }}>
                                     <div style={divStyle}>
-                                        {/* Error: link is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`. */}
                                         <h3>
                                             <Link to=
                                                 {`/tour/${marker.siteID}`}
@@ -129,7 +103,6 @@ function WalkumentaryMap() {
                                                 {marker.name}
                                             </Link>
                                         </h3>
-                                        {/* https://upmostly.com/tutorials/pass-a-parameter-through-onclick-in-react */}
                                         <p>{marker.location.popUpDescription}</p>
                                         <button
                                             className="btn btn-sm btn-info"
@@ -140,12 +113,10 @@ function WalkumentaryMap() {
                                                             lat: parseFloat(marker.location.latForMapDisplay),
                                                             lng: parseFloat(marker.location.lngForMapDisplay)
                                                         },
-                                                        // origin: checkForUserLocation(),
                                                         origin: 
-                                                            userLocation === null ? 
+                                                            userLocation === { lat: 0, lng: 0 } ? 
                                                                 window.alert("Please click the Show my Location button above the map first") 
                                                             : userLocation,
-                                                        // origin: { lat: 43.0472300, lng: -76.1508000 },
                                                         travelMode: 'WALKING'
                                                     })
                                                 }
