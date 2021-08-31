@@ -1,3 +1,4 @@
+// import { Link } from "react-router-dom";
 import "./Homepage.scss"
 
 export const Homepage = (props) => {
@@ -30,7 +31,7 @@ export const Homepage = (props) => {
                                 </h3>
                                 <div className="imageContainer">
                                     <a href="https://picryl.com/media/map-of-the-village-of-syracuse-and-the-village-of-lodi-1834-f78dce">
-                                        <img className="widthOfIndexPage img-fluid" src='/images/syracuseMap1834.jpg' />
+                                        <img className="widthOfIndexPage img-fluid" src='/images/syracuseMap1834.jpg' alt="1834 Map of Syracuse" />
                                     </a>
                                     <br />
                                     <span>
@@ -47,7 +48,7 @@ export const Homepage = (props) => {
                                 </h3>
                                 <div className="imageContainer">
                                     <a href="https://picryl.com/media/grand-view-city-and-canal-syracuse-ny-3cfffc">
-                                        <img className="widthOfIndexPage img-fluid" src='/images/clintonSquare1880.jpg' />
+                                        <img className="widthOfIndexPage img-fluid" src='/images/clintonSquare1880.jpg' alt="Clinton Square in 1880" />
                                     </a>
                                     <br />
                                     <span>
@@ -64,7 +65,7 @@ export const Homepage = (props) => {
                                 </h3>
                                 <div className="imageContainer">
                                     <a href="https://picryl.com/media/syracuse-ny-27315e">
-                                        <img className="widthOfIndexPage img-fluid" src='/images/syracuse1890.jpg' />
+                                        <img className="widthOfIndexPage img-fluid" src='/images/syracuse1890.jpg' alt="Syracuse 1890" />
                                     </a>
                                     <br />
                                     <span>
@@ -82,12 +83,12 @@ export const Homepage = (props) => {
                                 <div className="doubleImageContainer container-fluid d-flex justify-content-center flex-wrap">
                                     <div className="imageContainer">
                                         <a href="https://picryl.com/media/city-hall-syracuse-ny">
-                                        <img className="sideBySide img-fluid" src='/images/syracuseCityHall1904.jpg' />
+                                        <img className="sideBySide img-fluid" src='/images/syracuseCityHall1904.jpg' alt="Syracuse City Hall in 1904" />
                                         </a>
                                     </div>
                                     <div className="imageContainer">
                                         <a href="https://picryl.com/media/syracuse-city-hall-washington-street-syracuse-onondaga-county-ny">
-                                        <img className="sideBySide img-fluid" src='/images/syracuseCityHall1970s.jpg' />
+                                        <img className="sideBySide img-fluid" src='/images/syracuseCityHall1970s.jpg' alt="Syracuse City Hall in the 1970s" />
                                         </a>
                                     </div>                                          
                                 </div>
@@ -106,16 +107,22 @@ export const Homepage = (props) => {
 
                         </div>
                         <div className="thankYouSupporters text-center pt-4 mt-4">
-                            <h3 class ="indexH3">Thank you to the following supporters!</h3>
-                            <div className="supportersContainer container-fluid d-flex justify-content-around pt-2">
+                            <h3 class ="indexH3">Thank you to the following organizations:</h3>
+                            <div className="supportersContainer container-fluid d-flex justify-content-center pt-2">
                                 <div>
-                                    <h4>Logo</h4>
+                                    <a href="https://hackupstate.com/home/">
+                                        <img style={{backgroundColor: "black", maxHeight: 60}} src="/images/hackUpstateLogo.png" alt="Hack Upstate Logo" />
+                                    </a>
                                 </div>
                                 <div>
-                                    <h4>Logo</h4>
+                                    <a href="https://careersincode.org/">
+                                        <img style={{backgroundColor: "black", maxHeight: 60}} src="/images/hackUpstateCiCLogo.png" alt="Careers in Code Logo" />
+                                    </a>
                                 </div>
                                 <div>
-                                    <h4>Logo</h4>
+                                    <a href="https://www.cnyhistory.org/">
+                                        <img style={{maxHeight: 60}} src="/images/ohaLogo.png" alt="Onondaga Historical Association Logo" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
