@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 import "./SiteList.scss"
 
 export const SiteList = (props) => {
@@ -12,11 +13,13 @@ export const SiteList = (props) => {
             });
             const data = await response.json();
             setCardData(data.siteData);
-            console.log(cardData);
+            console.log(data, "cardData variable:", cardData);
         };
         loadSite();
-    },[]);
+    },[]); 
+    // Line 19:7:   React Hook useEffect has a missing dependency: 'cardData'. Either include it or remove the dependency array
 
+    
     if (cardData === null) {
         return <h1>Loading...</h1>
     };
@@ -37,7 +40,7 @@ export const SiteList = (props) => {
                             <div className="card-body">
                                 <h5 className="card-title">{eachCard?.name}</h5>
                                 <p className="card-text">{eachCard?.location?.popUpDescription}</p>
-                                <a href="#" className="btn btn-info">Go to this Tour Page</a>
+                                <a href={`/tour/${eachCard.siteID}`} className="btn btn-info">Go to this Tour Page</a>
                             </div>
                         </div>
                     )
@@ -50,7 +53,7 @@ export const SiteList = (props) => {
                         <div className="card-body">
                             <h5 className="card-title">{cardData?.name}</h5>
                             <p className="card-text">{cardData?.location?.popUpDescription}</p>
-                            <a href="#" className="btn btn-info">Go to this Tour Page</a>
+                            <a href="/tour/1" className="btn btn-info">Go to this Tour Page</a>
                         </div>
                     </div>
 
@@ -61,7 +64,7 @@ export const SiteList = (props) => {
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" className="btn btn-info">Go somewhere</a>
+                            <a href="/tour/2" className="btn btn-info">Go somewhere</a>
                         </div>
                     </div>
 
@@ -72,7 +75,7 @@ export const SiteList = (props) => {
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" className="btn btn-info">Go somewhere</a>
+                            <a href="/tour/3" className="btn btn-info">Go somewhere</a>
                         </div>
                     </div>
 
@@ -83,7 +86,7 @@ export const SiteList = (props) => {
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" className="btn btn-info">Go somewhere</a>
+                            <a href="/tour/4" className="btn btn-info">Go somewhere</a>
                         </div>
                     </div>
 
