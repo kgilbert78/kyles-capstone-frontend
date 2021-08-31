@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useState } from "react";
 import { Homepage } from "./Homepage/Homepage";
-import { TourPageLayout } from "./TourPage/TourPageLayout/TourPageLayout";
 import { MapPage } from "./MapPage/MapPage";
 import { TourSites } from "./TourPage/TourSites/TourSites";
 import { SiteList } from "./SiteList/SiteList";
