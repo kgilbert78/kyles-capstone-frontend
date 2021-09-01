@@ -136,7 +136,6 @@ export const TourSites = (props) => {
                         </h1>
                         <div className="description">
                             <RichText text={siteData.text} />
-                            {/* install DOMPurify: https://www.npmjs.com/package/dompurify  */}
                             <span>SOURCES:<br />
                                 <em>
                                     {
