@@ -10,7 +10,6 @@ const divStyle = { background: `white`, border: `1px solid #ccc`, padding: 15 };
 
 function WalkumentaryMap() {
     const [map, setMap] = useState(null);
-    const [origin, setOrigin] = useState({ lat: 0, lng: 0 });
     const [userLocation, setUserLocation] = useState(null);
     const [center, setCenter] = useState({ lat: 43.049736, lng: -76.150136 });
     const [markers, setMarkers] = useState(null);
@@ -18,7 +17,7 @@ function WalkumentaryMap() {
     const [markerClicked, setMarkerClicked] = useState(false);
     const [directionsService, setDirectionsService] = useState(null);
     const [directions, setDirections] = useState(null);
-    const [directionsOptions, setDirectionsOptions] = useState({});
+    const [directionsOptions, setDirectionsOptions] = useState(null);
 
     useEffect(() => {
         const loadSite = async () => {
@@ -131,11 +130,11 @@ function WalkumentaryMap() {
                 })}
 
                 {/* only rendering DirectionsService to get a reference to the underlying new google.maps.DirectionsService onLoad */}
-                <DirectionsService
-                    options={{}}
+                {directionsOptions ? <DirectionsService
+                    options={directionsOptions}
                     callback={() => undefined}
                     onLoad={(service) => setDirectionsService(service)}
-                />
+                /> : null}
 
                 {directions ? <DirectionsRenderer
                     options={{ // eslint-disable-line 
@@ -157,16 +156,3 @@ function WalkumentaryMap() {
 };
 
 export const MapPage = memo(WalkumentaryMap);
-
-// export const MapPage = () => {
-//     return (
-//         <div style={{padding: "60px"}}>
-//             <p>The map page looks like this when the API Key is included in the public code. 4 markers placed & labeled, directions work from fixed point for now, links in info windows take you to the right Tour page. For now you can get to them by clicking:</p>
-//             <p><a href="/tour/1">Fayette Park</a></p>
-//             <p><a href="/tour/2">City Hall</a></p>
-//             <p><a href="/tour/3">George Boyer Vashon Law Office</a></p>
-//             <p><a href="/tour/4">Jerry Rescue Building</a></p>
-//             <img style={{height: "80vh"}} src="/images/walkumentaryGoogleMap8-22.png" />
-//         </div>
-//     )
-// }
