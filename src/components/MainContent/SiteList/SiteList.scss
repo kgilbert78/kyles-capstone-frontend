@@ -43,8 +43,15 @@ main {
     width: 270px;
 }
 
+.card-title {
+    font-family: 'Fahkwang', sans-serif;
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: black;
+    -webkit-text-decoration-color: black; /* Safari */  
+}
+
 img {
     max-height: 100%;
     margin: 4px;
-    text-align: center;
 }

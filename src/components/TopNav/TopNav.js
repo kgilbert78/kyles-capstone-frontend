@@ -4,11 +4,10 @@ import "./TopNav.scss"
 export const TopNav = (props) => {
     return (
         <div className="TopNav">
-            {/* RESIZE TO STACK? https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp */}
             <nav className="navbarTop navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid">
                         <a className="logo navbar-brand" href="/">
-                            <img className="m-0 p-0" src="https://img.icons8.com/ios-filled/30/000000/sneakers.png"/>
+                            <img className="m-0 p-0" src="https://img.icons8.com/ios-filled/30/000000/sneakers.png" alt="walkumentary sneaker logo" />
                         </a>
                     <button className="navbar-toggler" 
                         type="button" 
@@ -20,20 +19,25 @@ export const TopNav = (props) => {
                             <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="navbar-collapse collapse justify-content-center" id="mainNav">
-                        {/* CREATE ROUTER HERE TO USE LINK TO INSTEAD OF A HREF, uncomment import at top
-                        <Router>
-                            <Switch>
-                                <Route exact path="/">
-                                    <Homepage />
-                                </Route>
-                                <Route path="/map">
-                                    <MapPage />
-                                </Route>
-                                <Route path="/tour">
-                                    <TourPageLayout />
-                                </Route>
-                            </Switch>
-                        </Router> */}
+                        {/* <ul className="navItemsList navbar-nav">
+                            <Router>
+                                <Switch>
+                                    <li className="navItem nav-item">
+                                        <Link className="nav-link" to="/">Home</Link>
+                                    </li>
+                                </Switch>
+                                <Switch>
+                                <li className="navItem nav-item">
+                                    <Link className="nav-link" to="/map">Map</Link>
+                                </li>
+                                </Switch>
+                                <Switch>
+                                <li className="navItem nav-item">
+                                    <Link className="nav-link" to="/sites">Tour Sites</Link>
+                                </li>
+                                </Switch>
+                            </Router>
+                        </ul> */}
                         <ul className="navItemsList navbar-nav">
                             <li className="navItem nav-item">
                                 <a className="nav-link" href="/">Home</a>
@@ -42,8 +46,7 @@ export const TopNav = (props) => {
                                 <a className="nav-link" href="/map">Map</a>
                             </li>
                             <li className="navItem nav-item">
-                            <a className="nav-link" href="/sites">Tour Sites</a>
-                            {/* <Link to="/tour" className="nav-link">Tour Page</Link> */}
+                                <a className="nav-link" href="/sites">Tour Sites</a>
                             </li>
                         </ul>
                     </div>

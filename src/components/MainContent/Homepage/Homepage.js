@@ -107,22 +107,24 @@ export const Homepage = (props) => {
 
                         </div>
                         <div className="thankYouSupporters text-center pt-4 mt-4">
-                            <h3 class ="indexH3">Thank you to the following organizations:</h3>
-                            <div className="supportersContainer container-fluid d-flex justify-content-center pt-2">
-                                <div>
-                                    <a href="https://hackupstate.com/home/">
-                                        <img style={{backgroundColor: "black", maxHeight: 60}} src="/images/hackUpstateLogo.png" alt="Hack Upstate Logo" />
-                                    </a>
-                                </div>
+                            <h3 className ="indexH3">Thank you to the following organizations:</h3>
+                            <div className="supportersContainer container-fluid d-flex justify-content-sm-center flex-column pt-2">
                                 <div>
                                     <a href="https://careersincode.org/">
-                                        <img style={{backgroundColor: "black", maxHeight: 60}} src="/images/hackUpstateCiCLogo.png" alt="Careers in Code Logo" />
+                                        <img style={{backgroundColor: "black", maxHeight: 40}} src="/images/hackUpstateCiCLogo.png" alt="Careers in Code Logo" />
                                     </a>
                                 </div>
-                                <div>
-                                    <a href="https://www.cnyhistory.org/">
-                                        <img style={{maxHeight: 60}} src="/images/ohaLogo.png" alt="Onondaga Historical Association Logo" />
-                                    </a>
+                                <div className="container-fluid d-flex justify-content-center">
+                                    <div>
+                                        <a href="https://hackupstate.com/home/">
+                                            <img style={{backgroundColor: "black", maxHeight: 60}} src="/images/hackUpstateLogo.png" alt="Hack Upstate Logo" />
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="https://www.cnyhistory.org/">
+                                            <img style={{maxHeight: 60}} src="/images/ohaLogo.png" alt="Onondaga Historical Association Logo" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

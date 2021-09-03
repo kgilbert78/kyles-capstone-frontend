@@ -73,11 +73,11 @@ function WalkumentaryMap() {
 
     return <div>
         <div id="userLocation" className="text-center">
-            <h3>Please enable your location for directions to a site!</h3>
+            <h3>Please show your location, then click a sneaker for directions to a site!</h3>
             <button className="btn btn-info mb-3" onClick={getUserLocation}>Show my location</button>
         </div>
         <LoadScript googleMapsApiKey="API_Key">
-            <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}
+            <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}
                 onLoad={onLoad}
             >
                 <Marker label="YOU ARE HERE" icon="/icons/icons8-compass-50.png" position={userLocation}>
@@ -113,8 +113,8 @@ function WalkumentaryMap() {
                                                             lng: parseFloat(marker.location.lngForMapDisplay)
                                                         },
                                                         origin: 
-                                                            userLocation === { lat: 0, lng: 0 } ? 
-                                                                window.alert("Please click the Show my Location button above the map first") 
+                                                            userLocation === null ? 
+                                                                window.alert("Please click the 'Show my Location' button above the map first.") 
                                                             : userLocation,
                                                         travelMode: 'WALKING'
                                                     })
