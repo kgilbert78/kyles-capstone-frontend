@@ -21,7 +21,7 @@ function WalkumentaryMap() {
 
     useEffect(() => {
         const loadSite = async () => {
-            const response = await fetch(`http://localhost:3005/sites/`, {
+            const response = await fetch(`https://walkumentary-syracuse-backend.herokuapp.com/sites/`, {
                 method: "GET"
             });
             const data = await response.json();
@@ -76,7 +76,7 @@ function WalkumentaryMap() {
             <h3>Please show your location, then click a sneaker for directions to a site!</h3>
             <button className="btn btn-info mb-3" onClick={getUserLocation}>Show my location</button>
         </div>
-        <LoadScript googleMapsApiKey="API_Key">
+        <LoadScript googleMapsApiKey="AIzaSyCojaBM_UMt9AOUvJJCl_pYszLapqjiemU">
             <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}
                 onLoad={onLoad}
             >

@@ -12,7 +12,7 @@ export const TourSites = (props) => {
 
     useEffect(() => {
         const loadSite = async () => {
-            const response = await fetch(`http://localhost:3005/sites/${props.match.params.siteID}`, {
+            const response = await fetch(`https://walkumentary-syracuse-backend.herokuapp.com/sites/${props.match.params.siteID}`, {
                 method: "GET"
             });
             const data = await response.json();

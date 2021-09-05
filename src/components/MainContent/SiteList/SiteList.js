@@ -8,7 +8,7 @@ export const SiteList = (props) => {
 
     useEffect(() => {
         const loadSite = async () => {
-            const response = await fetch(`http://localhost:3005/sites/`, {
+            const response = await fetch(`https://walkumentary-syracuse-backend.herokuapp.com/sites/`, {
                 method: "GET"
             });
             const data = await response.json();
