@@ -19,7 +19,7 @@ export const BottomNav = (props) => {
         },500)
 
         console.log("audio in navbar:", props.audioFilePath)
-    },[props.audioFilePath])
+    },[props.audioFilePath]) // audioplayer.current.ended()
 
     const playPause = () => {
         if (audioPlayer.current.paused) {
@@ -71,6 +71,10 @@ export const BottomNav = (props) => {
         };
     };
 
+    const ended = ()=>{
+        setPlayPauseButton("fas fa-play-circle fa-lg");
+    }
+
 
     return (
         <div className="BottomNav">
@@ -88,7 +92,7 @@ export const BottomNav = (props) => {
                 </span>
             </div>
 
-            <audio ref={audioPlayer}><source src={props.audioFilePath} type="audio/mpeg"></source></audio>
+            <audio ref={audioPlayer} onEnded={ended}><source src={props.audioFilePath} type="audio/mpeg"></source></audio>
             </nav>
         </div>
     );
