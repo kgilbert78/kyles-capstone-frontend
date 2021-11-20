@@ -3,6 +3,7 @@ import { Homepage } from "./Homepage/Homepage";
 import { MapPage } from "./MapPage/MapPage";
 import { TourSites } from "./TourPage/TourSites/TourSites";
 import { SiteList } from "./SiteList/SiteList";
+import { SiteListRec } from "./SiteList/SiteListRec";
 
 
 export const MainContent = (props) => {
@@ -21,6 +22,9 @@ export const MainContent = (props) => {
                     </Route>
                     <Route path="/sites">
                         <SiteList />
+                    </Route>
+                    <Route path="/sites2">
+                        <SiteListRec />
                     </Route>
                 </Switch>
             </Router>
