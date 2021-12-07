@@ -13,6 +13,7 @@ export const SiteList = (props) => {
             });
             const data = await response.json();
             setCardData(data.siteData);
+
         };
         loadSite();
     },[]); 
@@ -28,19 +29,19 @@ export const SiteList = (props) => {
                 <h2 className="pt-2">or visit the map to choose based on location!</h2>
                 <div className="mainContent container-fluid d-flex justify-content-around flex-wrap">
 
-                {cardData?.map((eachCard) => {
+                {cardData.map((eachCard) => {
                     return (
                         <div className="card mx-1 my-2">
                             <div className="cardImageContainer mx-auto">
                                 <a href={`/tour/${eachCard.siteID}`}>
-                                    <img src={eachCard?.photos?.[0]?.url} className="card-img-top mx-0 pt-1" alt="..." />
+                                    <img src={eachCard.photos[0].url} className="card-img-top mx-0 pt-1" alt="..." />
                                 </a>
                             </div>
                             <div className="card-body text-center">
                                 <a href={`/tour/${eachCard.siteID}`}>
-                                    <h5 className="card-title">{eachCard?.name}</h5>
+                                    <h5 className="card-title">{eachCard.name}</h5>
                                 </a>
-                                <p className="card-text">{eachCard?.location?.popUpDescription}</p>
+                                <p className="card-text">{eachCard.location.popUpDescription}</p>
                                 <a href={`/tour/${eachCard.siteID}`} className="btn btn-info">Go to this Tour Page</a>
                             </div>
                         </div>

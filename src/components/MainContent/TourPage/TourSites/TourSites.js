@@ -27,10 +27,12 @@ export const TourSites = (props) => {
    
     const {site, location, photos, soundEffects, textCredits} = siteData;
 
-    if (siteData === null || location === null || photos=== null || soundEffects=== null || textCredits=== null || featureImageSource === []) {
+    console.log(soundEffects)
+
+    // all site data set at once, so if photos has a value the rest of the siteData will too.
+    if (photos === undefined) {
         return <h1 className="mt-5">Loading...</h1>
     };
-    
     
     return (
         <div className="TourSite">
@@ -56,17 +58,17 @@ export const TourSites = (props) => {
 
                         <div id="thumbnailRow" className="thumbnailRow row pt-3">
 
-                        {photos?.map((photo) => {
+                        {photos.map((photo) => {
                             return (
-                                <div key={photo?.photoID} className="thumbnailImageDiv col-3">
+                                <div key={photo.photoID} className="thumbnailImageDiv col-3">
                                     <img 
-                                        id={photo?.photoID}
+                                        id={photo.photoID}
                                         className="thumbnailImage img-thumbnail rounded"
-                                        src={photo?.url} 
-                                        alt={photo?.altTag}
+                                        src={photo.url} 
+                                        alt={photo.altTag}
                                         onClick={()=>{
-                                            setFeatureImageSource(photo?.url)
-                                            setImageCaptionSource(photo?.caption)
+                                            setFeatureImageSource(photo.url)
+                                            setImageCaptionSource(photo.caption)
                                         }}
                                     />
                                 </div>
@@ -83,11 +85,10 @@ export const TourSites = (props) => {
                                     type="button" 
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
-                                        setAudioFilePath(soundEffects?.[0]?.url)
-                                        console.log(soundEffects?.[0]?.url)
+                                        setAudioFilePath(soundEffects[0].url)
                                     }}
                                 >
-                                    {soundEffects?.[0]?.name}
+                                    {soundEffects[0].name}
                                 </button>
                             </div>
                             <div>
@@ -95,11 +96,11 @@ export const TourSites = (props) => {
                                     type="button" 
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
-                                        setAudioFilePath(soundEffects?.[1]?.url)
+                                        setAudioFilePath(soundEffects[1].url)
                                         console.log("audio in Tour page", audioFilePath)
                                     }}
                                 >
-                                    {soundEffects?.[1]?.name}
+                                    {soundEffects[1].name}
                                 </button>
                             </div>
                             <div>
@@ -112,16 +113,16 @@ export const TourSites = (props) => {
                                         console.log("audio in Tour page", audioFilePath)
                                     }}
                                 >
-                                    {soundEffects?.[2]?.name}
+                                    {soundEffects[2].name}
                                 </button>
                             </div>
                         </div>
                         <div className="soundEffectCaptions mt-3 text-center">
                             <ul>
-                                {soundEffects?.map((soundEffect) => {
+                                {soundEffects.map((soundEffect) => {
                                     return (
                                         soundEffect.caption ? 
-                                            <li key={soundEffect?.soundEffectID}>{soundEffect?.caption}</li>
+                                            <li key={soundEffect.soundEffectID}>{soundEffect.caption}</li>
                                         : null
                                     );
                                 })}
