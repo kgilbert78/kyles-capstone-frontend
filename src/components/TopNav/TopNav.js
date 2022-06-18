@@ -40,13 +40,13 @@ export const TopNav = (props) => {
                         </ul> */}
                         <ul className="navItemsList navbar-nav">
                             <li className="navItem nav-item">
-                                <a className="nav-link" href="/">Home</a>
+                                <a className="nav-link text-dark fs-5" href="/">Home</a>
                             </li>
                             <li className="navItem nav-item">
-                                <a className="nav-link" href="/map">Map</a>
+                                <a className="nav-link text-dark fs-5" href="/map">Map</a>
                             </li>
                             <li className="navItem nav-item">
-                                <a className="nav-link" href="/sites">Tour Sites</a>
+                                <a className="nav-link text-dark fs-5" href="/sites">Tour Sites</a>
                             </li>
                         </ul>
                     </div>

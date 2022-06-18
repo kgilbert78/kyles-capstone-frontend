@@ -136,9 +136,12 @@ main {
     opacity: 1 !important; 
 }
 
+.indexH2 {
+        padding-top: 1rem;
+
+}
 @include media-breakpoint-up(sm) {
     .indexH2 {
-        padding-top: 1rem;
         font-size: 1.75rem;
     }
 }
