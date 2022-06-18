@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 // import { Link } from "react-router-dom";
 import "./TourSites.scss"
 import { BottomNav } from "../BottomNav/BottomNav";
 import { RichText } from "./RichText";
+import * as Reducer from "./reducer"
 
 export const TourSites = (props) => {
-    const [siteData, setSiteData] = useState({});
-    const [featureImageSource, setFeatureImageSource] = useState("");
-    const [imageCaptionSource, setImageCaptionSource] = useState([]);
-    const [audioFilePath, setAudioFilePath] = useState("");
+    const [state, dispatch] = useReducer(Reducer.reducer, Reducer.initialState)
 
     useEffect(() => {
         const loadSite = async () => {
@@ -16,16 +14,16 @@ export const TourSites = (props) => {
                 method: "GET"
             });
             const data = await response.json();
-            setSiteData(data.selectedSiteData[0]);
+            dispatch(Reducer.setSiteData(data.selectedSiteData[0]));
             const {url, caption} = data.selectedSiteData[0].photos[0];
-            setFeatureImageSource(url);
-            setImageCaptionSource(caption);
-            setAudioFilePath(data.selectedSiteData[0].soundEffects[0].url)
+            dispatch(Reducer.setFeatureImageSource(url));
+            dispatch(Reducer.setImageCaptionSource(caption));
+            dispatch(Reducer.setAudioFilePath(data.selectedSiteData[0].soundEffects[0].url))
         };
         loadSite();
     },[]);
    
-    const {site, location, photos, soundEffects, textCredits} = siteData;
+    const {site, location, photos, soundEffects, textCredits} = state.siteData;
 
     console.log(soundEffects)
 
@@ -40,20 +38,20 @@ export const TourSites = (props) => {
                 <div className="mainContent container-fluid d-flex justify-content-around flex-wrap">
                     <section className="imagesSounds col-lg-5">
                         <h1 className="siteName pb-2">
-                            {siteData.name}
+                            {state.siteData.name}
                         </h1>
 
                     <div className="imageContainer">
                             <img 
                             className="featureImage img-fluid rounded" 
                             id="featureImage"
-                            src={featureImageSource}
+                            src={state.featureImageSource}
                             alt={photos?.altTag?.[0]}
                             />
                     </div> 
                     
                         <h2 className="featureImageInfo text-center pt-3">
-                            {imageCaptionSource}
+                            {state.imageCaptionSource}
                         </h2>
 
                         <div id="thumbnailRow" className="thumbnailRow row pt-3">
@@ -67,8 +65,8 @@ export const TourSites = (props) => {
                                         src={photo.url} 
                                         alt={photo.altTag}
                                         onClick={()=>{
-                                            setFeatureImageSource(photo.url)
-                                            setImageCaptionSource(photo.caption)
+                                            dispatch(Reducer.setFeatureImageSource(photo.url))
+                                            dispatch(Reducer.setImageCaptionSource(photo.caption))
                                         }}
                                     />
                                 </div>
@@ -85,7 +83,7 @@ export const TourSites = (props) => {
                                     type="button" 
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
-                                        setAudioFilePath(soundEffects[0].url)
+                                        dispatch(Reducer.setAudioFilePath(soundEffects[0].url))
                                     }}
                                 >
                                     {soundEffects[0].name}
@@ -96,8 +94,8 @@ export const TourSites = (props) => {
                                     type="button" 
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
-                                        setAudioFilePath(soundEffects[1].url)
-                                        console.log("audio in Tour page", audioFilePath)
+                                        dispatch(Reducer.setAudioFilePath(soundEffects[1].url))
+                                        console.log("audio in Tour page", state.audioFilePath)
                                     }}
                                 >
                                     {soundEffects[1].name}
@@ -109,8 +107,8 @@ export const TourSites = (props) => {
                                     className="btn btn-lg btn-info"
                                     onClick={(event) => {
                                         event.preventDefault();
-                                        setAudioFilePath(soundEffects[2].url)
-                                        console.log("audio in Tour page", audioFilePath)
+                                        dispatch(Reducer.setAudioFilePath(soundEffects[2].url))
+                                        console.log("audio in Tour page", state.audioFilePath)
                                     }}
                                 >
                                     {soundEffects[2].name}
@@ -133,10 +131,10 @@ export const TourSites = (props) => {
 
                     <section className="siteInfo col-lg-5">
                         <h1 className="subtitle pt-3 m-0">
-                            About {siteData.name}
+                            About {state.siteData.name}
                         </h1>
                         <div className="description">
-                            <RichText text={siteData.text} />
+                            <RichText text={state.siteData.text} />
                             <span>SOURCES:<br />
                                 <em>
                                     {
@@ -180,7 +178,7 @@ export const TourSites = (props) => {
                     </section>
                 </div>
             </main>
-            <BottomNav audioFilePath={audioFilePath} />
+            <BottomNav audioFilePath={state.audioFilePath} />
         </div>
     )
 
