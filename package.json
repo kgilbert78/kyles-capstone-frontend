@@ -1,6 +1,9 @@
 {
   "name": "walkumentary-frontend",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.13.0"
+  },
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.2.0",
