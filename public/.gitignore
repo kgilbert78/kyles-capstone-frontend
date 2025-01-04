@@ -1,5 +1,5 @@
 audio/
 images/
 icons/
-../src/images/adjusted/
+src/images/adjusted/
 *.jpg
