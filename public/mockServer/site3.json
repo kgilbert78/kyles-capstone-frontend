@@ -1,0 +1,109 @@
+{
+    "selectedSiteData": [
+        {
+            "siteID": 3,
+            "name": "George Boyer Vashon Law Office",
+            "text": "<p mt-0>George Boyer Vashon was a multi-talented man who became the first African-American lawyer in New York State. His law office was located on the second floor of this building from 1851 to 1853. </p><p>By the age of 16, Vashon had learned five languages. In 1844 he became the first African American graduate of Oberlin Collegiate Institute, and received valedictory honors. Following graduation he spent two years studying law under a prominent attorney in Pittsburgh, but despite his qualifications his application to the Allegheny County Bar was denied due to his race. In January 1848 he took the bar exam in New York and was admitted. He received a Masters of Arts degree from Oberlin in 1849, and then moved to Port-au-Prince, Haiti for two years as a professor, and a correspondent for Frederick Douglass's newspaper The North Star. </p><p>Following his time in Haiti, Vashon lived in Syracuse for four years. </p><p>While here he was active in the Underground Railroad and gave lectures in the African Methodist Episcopal Zion Church. He signed at least one abolitionist petition to Congress, served as a delegate to the Colored Peoples's Convention in Rochester in 1853, and wrote his epic poem Vincent Og&eacute;. He also drafted resolutions for a meeting of African Americans who were opposed to the establishment of a local colonization society. One read as follows: 'Resolved, that we are opposed to emigration in large bodies to any country, - whether it be to Liberia, Canada, the West Indies, or elsewhere; that we believe our right to remain in this country, to be as indisputable as that of our white fellow citizens; and that our own well-being as well as that of our enslaved brethren at the South, require us to look forward to this land as the place of our burial, as it has been that of our birth.'</p><p>Vashon ran for Attorney General of New York State in 1855. Although he did not win, it was a historic candidacy because he was the first African American to run for statewide office.</p><p>He married Susan Paul Smith in 1857 and they had seven children.</p><p>After he left Syracuse he went on to a series of positions at various colleges while continuing to practice law. He became the first African American professor at Howard University, where he also helped establish the Law School.</p><p>The following are the opening lines of the epic poem he wrote while living in Syracuse. The full text can be found here: <a href='https://allpoetry.com/Vincent-Og'>https://allpoetry.com/Vincent-Og</a> </p><p><strong>Vincent Og&eacute;, by George Boyer Vashon</strong><p><p><em>There is, at times, an evening sky —<br />The twilight's gift — of sombre hue,<br />All checkered wild and gorgeously<br />With streaks of crimson, gold and blue; —<br />A sky that strikes the soul with awe,<br />And, though not brilliant as the sheen,<br />Which in the east at morn we saw,<br />Is far more glorious, I ween; —<br />So glorious that, when night hath come<br />And shrouded it in deepest gloom,<br />We turn aside with inward pain<br />And pray to see that sky again.<br />Such sight is like the struggle made<br />When freedom bids unbare the blade,<br />And calls from every mountain-glen —<br />From every hill — from every plain,<br />Her chosen ones to stand like men,<br />And cleanse their souls from every stain<br />Which wretches, steeped in crime and blood,<br />Have cast upon the form of God.<br />Though peace like morning's golden hue,<br />With blooming groves and waving fields,<br />Is mildly pleasing to the view,<br />And all the blessings that it yields<br />Are fondly welcomed by the breast<br />Which finds delight in passion's rest,<br />That breast with joy foregoes them all,<br />While listening to Freedom's call.</em> </p>",
+            "audioNarrationURL": "/audio/georgeVashonNarration.mp3",
+            "createdAt": "2025-01-16T00:46:24.689Z",
+            "updatedAt": "2025-01-16T00:46:24.689Z",
+            "photos": [
+                {
+                    "photoID": 9,
+                    "siteID": 3,
+                    "url": "/images/danaBlock.jpg",
+                    "caption": "Vashon's 2nd floor office",
+                    "credit": "Dana Block Building: Kyle Gilbert, 2021",
+                    "creditURL": "",
+                    "altTag": "Building that housed George Boyer Vashon's law office on the second floor in the 1850s",
+                    "createdAt": "2025-01-16T00:46:24.695Z",
+                    "updatedAt": "2025-01-16T00:46:24.695Z"
+                },
+                {
+                    "photoID": 10,
+                    "siteID": 3,
+                    "url": "/images/georgeBoyerVashon.jpg",
+                    "caption": "George Boyer Vashon",
+                    "credit": "George Boyer Vashon Portrait: McGraw Historical Society",
+                    "creditURL": "https://nyheritage.org/organizations/mcgraw-historical-society",
+                    "altTag": "Portrait of George Boyer Vashon",
+                    "createdAt": "2025-01-16T00:46:24.697Z",
+                    "updatedAt": "2025-01-16T00:46:24.697Z"
+                }
+            ],
+            "location": {
+                "locationID": 3,
+                "siteID": 3,
+                "latForMapDisplay": "43.0506402",
+                "lngForMapDisplay": "-76.1509",
+                "latForGeolocation": "43.0506402",
+                "lngForGeolocation": "-76.1514854",
+                "popUpDescription": "Office of the first African-American lawyer in New York State",
+                "timesVisited": 0,
+                "createdAt": "2025-01-16T00:46:24.692Z",
+                "updatedAt": "2025-01-16T00:46:24.692Z"
+            },
+            "soundEffects": [
+                {
+                    "soundEffectID": 7,
+                    "siteID": 3,
+                    "name": "Play Narration",
+                    "caption": "",
+                    "url": "/audio/georgeVashonNarration.mp3",
+                    "credit": "",
+                    "creditURL": "",
+                    "createdAt": "2025-01-16T00:46:24.700Z",
+                    "updatedAt": "2025-01-16T00:46:24.700Z"
+                },
+                {
+                    "soundEffectID": 8,
+                    "siteID": 3,
+                    "name": "Vashon's Poem",
+                    "caption": "Hear an excerpt from George Boyer Vashon's poem 'Vincent Oge' by clicking the button above.",
+                    "url": "/audio/vincentOge.mp3",
+                    "credit": "George Boyer Vashon, read by Kyle Gilbert",
+                    "creditURL": "https://allpoetry.com/Vincent-Og",
+                    "createdAt": "2025-01-16T00:46:24.703Z",
+                    "updatedAt": "2025-01-16T00:46:24.703Z"
+                },
+                {
+                    "soundEffectID": 9,
+                    "siteID": 3,
+                    "name": "Horse & Carriage",
+                    "caption": "",
+                    "url": "/audio/freeSoundCanadianHorseAndCarriage.mp3",
+                    "credit": "vero.marengere",
+                    "creditURL": "https://freesound.org/people/vero.marengere/sounds/450325/",
+                    "createdAt": "2025-01-16T00:46:24.706Z",
+                    "updatedAt": "2025-01-16T00:46:24.706Z"
+                }
+            ],
+            "textCredits": [
+                {
+                    "textCreditID": 13,
+                    "siteID": 3,
+                    "credit": "AAREG (African American Registry)",
+                    "url": "https://aaregistry.org/story/george-boyer-vashon-had-many-talents/",
+                    "createdAt": "2025-01-16T00:46:24.709Z",
+                    "updatedAt": "2025-01-16T00:46:24.709Z"
+                },
+                {
+                    "textCreditID": 14,
+                    "siteID": 3,
+                    "credit": "Blackpast.org",
+                    "url": "https://www.blackpast.org/african-american-history/vashon-george-b-1824-1878/",
+                    "createdAt": "2025-01-16T00:46:24.711Z",
+                    "updatedAt": "2025-01-16T00:46:24.711Z"
+                },
+                {
+                    "textCreditID": 15,
+                    "siteID": 3,
+                    "credit": "Preservation Association of Central New York",
+                    "url": "https://pacny.net/freedom_trail/Vashon.htm",
+                    "createdAt": "2025-01-16T00:46:24.713Z",
+                    "updatedAt": "2025-01-16T00:46:24.713Z"
+                }
+            ]
+        }
+    ]
+}

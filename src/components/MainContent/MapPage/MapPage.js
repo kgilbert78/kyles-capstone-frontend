@@ -1,4 +1,3 @@
-// import googleMapsAPIKey from "./googleMapsAPIKey/googleMapsAPIKey";
 import "./MapPage.scss";
 import { useState, useEffect, useCallback, memo } from "react";
 import { Link } from "react-router-dom";
@@ -76,7 +75,7 @@ function WalkumentaryMap() {
             <h3>Please show your location, then click a sneaker for directions to a site!</h3>
             <button className="btn btn-info mb-3" onClick={getUserLocation}>Show my location</button>
         </div>
-        <LoadScript googleMapsApiKey="API Key">
+        <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY_RENDERDOTCOM}>
             <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}
                 onLoad={onLoad}
             >
