@@ -75,7 +75,7 @@ function WalkumentaryMap() {
             <h3>Please show your location, then click a sneaker for directions to a site!</h3>
             <button className="btn btn-info mb-3" onClick={getUserLocation}>Show my location</button>
         </div>
-        <LoadScript googleMapsApiKey="AIzaSyARi7HP7yVVLDHdHSSkVPW_Deu_EyjdbkI">
+        <LoadScript googleMapsApiKey="AIzaSyABnIZ1E2I7UxRr0xSaz4nIaJyMwURfz9s">
             <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}
                 onLoad={onLoad}
             >
