@@ -5,9 +5,9 @@ export const Homepage = (props) => {
     return (
         <div className="Homepage">
             <main>
-            <div id="indexForeground">
-                <div className="indexBackground">
-                    
+                <div id="indexForeground">
+                    <div className="indexBackground">
+
                         <h1 className="indexH1">Walkumentary</h1>
                     </div>
                 </div>
@@ -17,7 +17,7 @@ export const Homepage = (props) => {
                     </h2>
 
                     <p className="text-center">
-                        My aim was to create a sample of a walking tour that is primarily audio-based, leaving your eyes and hands free. Additional features include immersive sound effects and clips of historical speeches from the site. Future plans include automatic play of the narration when the user arrives at the site, and voice GPS directions to help the user navigate to the chosen site.
+                        My aim was to create a sample of a phone-friendly walking tour that is primarily audio-based, leaving your eyes and hands free. Additional features include immersive sound effects and clips of historical speeches from the site. The site is best experienced from a location in downtown Syracuse, so that the maps portion can give you walking directions. Future plans include automatic play of the narration when the user arrives at the site, and voice GPS directions to help the user navigate to the chosen site.
                     </p>
                     <p className="text-center">The theme of the sample tour is the struggle for equality.</p>
                     <div className="text-center">

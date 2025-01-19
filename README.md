@@ -2,7 +2,7 @@
 
 ### An immersive audio walking tour of Syracuse history.
 
-This was my [Careers in Code](https://careersincode.org/) Capstone project, which I built in React with Google Maps API and HTML Audio. It's responsive, and I created it using mobile-first design. For my capstone I built a [backend](https://github.com/kgilbert78/kyles-capstone-backend) in NodeJS with a PostgreSQL database to store data about the stops on the tour. I have since stored that data in `.json` files here in the React App so that I only need to deploy a frontend. You can see the live site at https://walkumentary-syracuse-frontend.herokuapp.com/ or soon at https://walkumentary.onrender.com/. It's best experienced on a mobile phone from a location in downtown Syracuse so that the maps portion can give you walking directions.
+This was my [Careers in Code](https://careersincode.org/) Capstone project, which I built in React with Google Maps API and HTML Audio. It's responsive, and I created it using mobile-first design. For my capstone I built a [backend](https://github.com/kgilbert78/kyles-capstone-backend) in NodeJS with a PostgreSQL database to store data about the stops on the tour. I have since stored that data in `.json` files here in the React App so that I only need to deploy a frontend. You can see the live site at https://walkumentary.onrender.com/. It's best experienced on a mobile phone from a location in downtown Syracuse so that the maps portion can give you walking directions.
 
 # Getting Started with Create React App
 
