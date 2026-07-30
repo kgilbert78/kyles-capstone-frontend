@@ -20,7 +20,8 @@ function WalkumentaryMap() {
 
     useEffect(() => {
         const loadSite = async () => {
-            const response = await fetch(`https://walkumentary-syracuse-backend.herokuapp.com/sites/`, {
+            const response = await fetch(`/mockServer/sites.json`, {
+                //https://walkumentary-syracuse-backend.herokuapp.com/sites/
                 method: "GET"
             });
             const data = await response.json();
